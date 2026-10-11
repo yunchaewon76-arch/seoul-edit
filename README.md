@@ -34,3 +34,13 @@ npm run dev
 - [확인된 판매 링크](src/data/verified-video-products.json): 아직 검증·등록되지 않음
 
 **주의:** 저장소가 Public이라 Issue에 작성한 초안은 공개됩니다. 검토 없이 사실·상품·재고를 확정하지 마세요.
+
+
+## Sanity Studio CMS (준비됨 · 계정 연결 필요)
+- 관리자 준비 화면: https://seoul-edit-web.vercel.app/studio
+- 구현된 문서: 기사, CREATOR WATCH 영상, 영상 속 제품 및 러시아 구매 대체품
+- Sanity 프로젝트 ID와 dataset을 Vercel `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`에 설정한 뒤 재배포
+- Sanity 프로젝트의 API CORS에 `https://seoul-edit-web.vercel.app`을 `Allow credentials`로 추가
+- [한국어 설정/관리 안내](docs/SANITY_ADMIN_KO.md)
+
+현재 계정에서는 Sanity 프로젝트 자체를 생성할 수 없으므로, Sanity Manage에서 사용자가 새 프로젝트를 만들거나 기존 프로젝트를 선택해야 합니다. 프로젝트 연결 전에는 기존 정적 콘텐츠가 그대로 표시됩니다. CMS에서는 `editorialStatus=published`로 승인해 Sanity 자체 Publish를 누른 문서만 메인 사이트에서 읽습니다.

@@ -11,4 +11,4 @@ const covers:Record<string,{src:string;alt:string;credit:string}>={
  "global-kbeauty-local-korea":{src:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1400&q=85",alt:"Иллюстративный бьюти-портрет",credit:"Unsplash · иллюстрация"},
  "ten-step-routine-what-is-necessary":{src:"https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1400&q=85",alt:"Иллюстрация базового ухода за кожей",credit:"Unsplash · иллюстрация"}
 };
-export const photoFor=(story:Article)=>covers[story.slug]??covers["hwahae-2026-what-rankings-tell-us"];
+export const photoFor=(story:Article)=>story.coverImageUrl?{src:story.coverImageUrl,alt:story.coverImageAlt||"Редакционное изображение",credit:story.coverImageCredit||"SEOUL EDIT"}:covers[story.slug]??covers["hwahae-2026-what-rankings-tell-us"];

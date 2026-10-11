@@ -692,3 +692,32 @@ body { min-width:320px }
 .se-product-research-source{display:inline-block;color:#68605b;font-size:11px;line-height:1.5;text-decoration:underline;text-underline-offset:3px;margin-top:11px;word-break:break-word}
 .se-product-research-source:hover{color:#b82e36}
 @media(max-width:767px){.se-candidate-shelf{margin-top:67px}}
+
+
+/* SEOUL EDIT CMS studio + video filters */
+body:has(.sanity-embed-page)>.site-header,body:has(.sanity-embed-page) .site-header,
+body:has(.sanity-embed-page) .mobile-bottom-nav,
+body:has(.sanity-embed-page) .footer{display:none!important}
+body:has(.sanity-embed-page){padding-bottom:0!important;background:#fff}
+.sanity-embed-page{min-height:100dvh;width:100%;background:#fff}
+.sanity-setup-page{display:flex;align-items:center;justify-content:center;background:#f5f1ee;padding:30px}
+.sanity-setup-inner{max-width:690px;background:#fff;border:1px solid #e4ded9;padding:clamp(26px,6vw,65px)}
+.sanity-setup-inner>span{font-size:11px;color:#b82e36;letter-spacing:.13em;font-weight:800}
+.sanity-setup-inner h1{font:normal clamp(36px,5vw,58px) Georgia,serif;letter-spacing:-.045em}
+.sanity-setup-inner p{line-height:1.7;color:#635d59;font-size:15px;overflow-wrap:anywhere}
+.sanity-setup-actions{display:flex;flex-wrap:wrap;gap:15px;margin-top:28px}
+.sanity-setup-actions a{border:1px solid #222;padding:13px 16px;font-size:13px;font-weight:800;min-height:45px}
+.sanity-setup-actions a:first-child{background:#222;color:#fff}
+.se-video-filters{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 22px}
+.se-video-filter{display:inline-flex;align-items:center;justify-content:space-between;gap:20px;min-height:49px;min-width:160px;padding:11px 16px;border:1px solid #dbd5d1;font-size:13px;font-weight:800;transition:background .2s}
+.se-video-filter small{color:#807a75;font-size:11px}
+.se-video-filter.is-selected,.se-video-filter:hover{background:#242121;color:#fff}
+.se-video-filter.is-selected small,.se-video-filter:hover small{color:#fff}
+.se-video-filter-summary{margin:0 0 27px;color:#777;font-size:12px;line-height:1.6}
+.se-video-filter-empty{padding:40px;background:#f4efeb;text-align:center}
+.se-video-filter-empty>span{font-size:50px;color:#b82e36}
+.se-video-filter-empty h3{font:normal clamp(26px,4vw,43px) Georgia,serif;letter-spacing:-.04em;margin:12px auto}
+.se-video-filter-empty p{font-size:14px;line-height:1.7;color:#777}
+.se-video-filter-empty a{display:inline-flex;align-items:center;min-height:44px;font-size:12px;font-weight:800;text-decoration:underline}
+.se-video-category-empty{background:#f4efeb;padding:28px;line-height:1.7;font-size:14px;color:#777}
+@media(max-width:767px){.se-video-filters{display:grid;grid-template-columns:1fr 1fr}.se-video-filter{min-width:0;font-size:12px;padding:9px 13px}.sanity-setup-page{padding:14px}}

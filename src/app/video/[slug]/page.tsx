@@ -4,17 +4,18 @@ import {notFound} from "next/navigation";
 import VideoPlayer from "@/components/VideoPlayer";
 import VideoProductShelf from "@/components/VideoProductShelf";
 import CandidateProductShelf from "@/components/CandidateProductShelf";
-import {videoStories,findVideoStory,videoYouTubeUrl} from "@/data/video-stories";
-import {confirmedVideoProducts} from "@/data/video-products";
+import {videoStories,videoYouTubeUrl} from "@/data/video-stories";
+import {getAllCreatorVideos,getVerifiedProducts} from "@/sanity/content";
+
 export function generateStaticParams(){return videoStories.map(s=>({slug:s.slug}));}
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{
- const {slug}=await params;const story=findVideoStory(slug);
+ const {slug}=await params;const story=(await getAllCreatorVideos()).find(s=>s.slug===slug);
  return story?{title:story.headline,description:story.deck}:{title:"Видео не найдено"};
 }
 export default async function VideoDetail({params}:{params:Promise<{slug:string}>}){
  const {slug}=await params;const story=findVideoStory(slug);
  if(!story)notFound();
- const products=confirmedVideoProducts.filter(p=>p.videoSlug===story.slug);
+ const products=await getVerifiedProducts(story.slug);
  return <div className="container se-video-detail">
   <nav className="se-video-breadcrumb"><Link href="/video">← CREATOR WATCH</Link><span>/</span><span>VIDEO NOTE</span></nav>
   <div className="se-video-detail-header"><span className="eyebrow">SEOUL EDIT / KOREAN CREATOR WATCH</span>

@@ -1,10 +1,12 @@
 import type {Metadata} from "next";
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
-import {sortedStories,type Category} from "@/data/articles";
+import type {Category} from "@/data/articles";
+import {getAllArticles} from "@/sanity/content";
 export const metadata:Metadata={title:"SEOUL SIGNAL — контекст корейских трендов",description:"Источники, проверенные факты и культурный контекст K-beauty и моды Сеула."};
 export default async function SignalPage({searchParams}:{searchParams:Promise<{topic?:string}>}){
  const {topic}=await searchParams;
+ const sortedStories=await getAllArticles();
  const active=topic==="beauty"||topic==="fashion"||topic==="trends"?topic:"all";
  const items=active==="all"?sortedStories:sortedStories.filter(s=>s.category===active);
  const topics:{id:"all"|Category;name:string}[]=[{id:"all",name:"Все сигналы"},{id:"beauty",name:"Красота"},{id:"fashion",name:"Мода"},{id:"trends",name:"Тренды"}];
@@ -12,7 +14,7 @@ export default async function SignalPage({searchParams}:{searchParams:Promise<{t
    <header className="signal-index-hero"><span className="eyebrow">THE RESEARCH DESK / EST. 2026</span>
     <h1>SEOUL <em>SIGNAL.</em></h1>
     <p>Что действительно происходит в Корее? Мы изучаем официальные источники, корейские рейтинги, исследования и отраслевые репортажи — и объясняем их на русском.</p>
-    <div className="signal-index-meta"><span>09 EDITORIAL STORIES</span><span>FIRST EDITION / OCT 2026</span><span>FACTS BEFORE HYPE</span></div>
+    <div className="signal-index-meta"><span>{sortedStories.length} EDITORIAL STORIES</span><span>FIRST EDITION / OCT 2026</span><span>FACTS BEFORE HYPE</span></div>
    </header>
    <nav className="signal-filters" aria-label="Фильтр материалов">
     {topics.map(t=><Link key={t.id} className={active===t.id?"active":""} href={t.id==="all"?"/signal":"/signal?topic="+t.id} aria-current={active===t.id?"page":undefined}>{t.name}</Link>)}

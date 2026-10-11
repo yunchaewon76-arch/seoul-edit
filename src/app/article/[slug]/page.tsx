@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {notFound} from "next/navigation";
 import ArticleCard from "@/components/ArticleCard";
-import {getStory,sortedStories,stories,dateLabel,categoryName,formatName} from "@/data/articles";
+import {stories,dateLabel,categoryName,formatName} from "@/data/articles";
+import {getAllArticles} from "@/sanity/content";
 import {photoFor} from "@/data/visuals";
 export function generateStaticParams(){return stories.map(story=>({slug:story.slug}));}
 export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{
- const {slug}=await params;const story=getStory(slug);return story?{title:story.title,description:story.excerpt}:{title:"Статья не найдена"};
+ const {slug}=await params;const story=(await getAllArticles()).find(s=>s.slug===slug);return story?{title:story.title,description:story.excerpt}:{title:"Статья не найдена"};
 }
 export default async function ArticlePage({params}:{params:Promise<{slug:string}>}){
- const {slug}=await params;const story=getStory(slug);if(!story)notFound();
+ const {slug}=await params;const sortedStories=await getAllArticles();const story=sortedStories.find(s=>s.slug===slug);if(!story)notFound();
  const related=sortedStories.filter(s=>s.slug!==slug&&s.category===story.category).slice(0,3);
  const photo=photoFor(story);
  return <div className="container article-wrap signal-article">

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import ArticleCard from "@/components/ArticleCard";
-import { sortedStories } from "@/data/articles";
+import { getAllArticles } from "@/sanity/content";
 export const metadata:Metadata={title:"Поиск"};
 export default async function SearchPage({searchParams}:{searchParams:Promise<{q?:string}>}){
+ const sortedStories=await getAllArticles();
  const {q=""}=await searchParams;const keyword=q.trim().toLocaleLowerCase("ru-RU");
  const filtered=keyword?sortedStories.filter(s=>[s.title,s.excerpt,...s.tags,...s.body].join(" ").toLocaleLowerCase("ru-RU").includes(keyword)):[];
  return <div className="container listing"><div className="eyebrow">SEOUL EDIT / SEARCH</div><h1>Поиск по журналу</h1>

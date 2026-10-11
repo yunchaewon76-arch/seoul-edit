@@ -1,13 +1,14 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
 import VideoStoryCard from "@/components/VideoStoryCard";
-import {videoStories} from "@/data/video-stories";
-import {sortedStories,categoryName} from "@/data/articles";
+import {getAllCreatorVideos,getAllArticles} from "@/sanity/content";
+
 import {photoFor} from "@/data/visuals";
 
-export default function Home(){
- const hero=sortedStories.find(s=>s.slug==="hwahae-2026-what-rankings-tell-us")!;
- const spotlight=sortedStories.find(s=>s.slug==="seoul-fashion-week-2027-city-festival")!;
+export default async function Home(){
+ const [sortedStories,videoStories]=await Promise.all([getAllArticles(),getAllCreatorVideos()]);
+ const hero=sortedStories.find(s=>s.slug==="hwahae-2026-what-rankings-tell-us")||sortedStories[0];
+ const spotlight=sortedStories.find(s=>s.slug==="seoul-fashion-week-2027-city-festival")||sortedStories[1]||hero;
  const picks=sortedStories.filter(s=>s.slug!==hero.slug&&s.slug!==spotlight.slug).slice(0,6);
  return <div id="top"><div className="container">
   <div className="issue-line"><span><span className="issue-mark">✳</span> ISSUE 001 <span className="issue-separator">/</span> OCTOBER 2026</span><span>BEAUTY · FASHION · SEOUL SIGNAL</span><span className="issue-right">INDEPENDENT KOREA JOURNAL ↗</span></div>
@@ -36,7 +37,7 @@ export default function Home(){
   <section className="se-home-video" aria-labelledby="se-home-video-heading">
     <div className="section-heading"><div><span className="section-num">02 / KOREAN CREATOR WATCH</span><h2 id="se-home-video-heading">Видео, <em>которые обсуждают</em></h2></div><Link className="section-action" href="/video">Все видео <span>↗</span></Link></div>
     <p className="se-home-video-deck">Смотрим корейские видео в оригинале, объясняем контекст на русском и проверяем, какие продукты действительно упоминаются.</p>
-    <div className="se-video-grid">{videoStories.map(s=><VideoStoryCard key={s.slug} story={s}/>)}</div>
+    <div className="se-video-grid">{videoStories.slice(0,4).map(s=><VideoStoryCard key={s.slug} story={s}/>)}</div>
   </section>
   <section className="mag-section" aria-labelledby="latest-heading">
    <div className="section-heading"><div><span className="section-num">02 / THE RESEARCH DESK</span><h2 id="latest-heading">Важное <em>с контекстом</em></h2></div><Link className="section-action" href="/signal">Все материалы <span>↗</span></Link></div>
