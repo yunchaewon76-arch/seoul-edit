@@ -1,0 +1,63 @@
+name: "영상 콘텐츠 제안 / Creator Watch"
+description: "한국 유튜브 영상을 검토하고 SEOUL EDIT에 등록하는 편집 요청 (자동 발행되지 않음)"
+title: "[VIDEO] "
+labels: ["editorial"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **관리용 초안입니다. 제출만으로 사이트에 공개되지 않습니다.**
+        현재 저장소는 Public이므로 이 이슈의 내용과 첨부파일은 누구나 볼 수 있습니다. 개인정보/비밀 정보는 올리지 마세요.
+  - type: input
+    id: youtube_url
+    attributes:
+      label: 유튜브 원본 URL
+      description: 추정한 URL 대신 실제 영상 링크를 넣어주세요.
+      placeholder: "https://www.youtube.com/watch?v=..."
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: 카테고리
+      options:
+        - "Beauty / Красота"
+        - "Fashion / Мода"
+        - "Trends / Тренды"
+        - "Unknown / 확인 대기"
+    validations:
+      required: true
+  - type: input
+    id: verified_title
+    attributes:
+      label: 검증한 영상 제목 (한국어)
+      placeholder: "아직 확인하지 못했다면 미확인으로 입력"
+    validations:
+      required: true
+  - type: input
+    id: creator
+    attributes:
+      label: 채널/크리에이터
+      placeholder: "미확인 가능"
+  - type: textarea
+    id: korean_summary
+    attributes:
+      label: 핵심 내용 및 실제 확인한 시간대
+      description: 실제로 보지 않은 영상의 대사·제품명을 상상해 적지 마세요.
+      placeholder: "00:00 — ...\n03:18 — ..."
+  - type: textarea
+    id: source_urls
+    attributes:
+      label: 확인한 자료 링크
+      placeholder: "영상 원본, 제작자 설명란, 공식 브랜드 링크 등"
+  - type: dropdown
+    id: status
+    attributes:
+      label: 준비 단계
+      options:
+        - "조사 필요 / Research"
+        - "원본 확인됨 / Source checked"
+        - "러시아어 초안 준비 / Draft ready"
+        - "발행 검토 요청 / Ready for review"
+    validations:
+      required: true

@@ -1,0 +1,64 @@
+name: "영상 속 제품 검증 / Product verification"
+description: "원제품 또는 대체품의 러시아 구매처를 조사하는 편집 요청 (자동 발행되지 않음)"
+title: "[PRODUCT] "
+labels: ["editorial"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **가격·재고·효능을 추정하지 마세요.** 현재 저장소는 Public이므로 입력한 내용이 외부에 공개됩니다.
+  - type: input
+    id: original_video
+    attributes:
+      label: 출처 유튜브 URL
+    validations:
+      required: true
+  - type: input
+    id: timestamp
+    attributes:
+      label: 제품 등장 시간대 / 근거
+      placeholder: "예: 04:20, 설명란 제품 목록, 미확인"
+    validations:
+      required: true
+  - type: input
+    id: product_name
+    attributes:
+      label: 원제품 브랜드·정확한 제품명·색상/용량
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 등록 종류
+      options:
+        - "원제품 / Original"
+        - "대체 후보 / Alternative"
+        - "확인 대기 / Research"
+    validations:
+      required: true
+  - type: input
+    id: market_url
+    attributes:
+      label: 러시아 판매 상품 상세 URL (확인된 경우만)
+      placeholder: "없으면 비워두세요. 검색 결과 URL 불가"
+  - type: input
+    id: checked_on
+    attributes:
+      label: 확인일과 대상 지역
+      placeholder: "2026-10-11 / Москва / 미확인"
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 확인한 근거와 대체품 비교 이유
+      placeholder: "공식 브랜드 자료, 성분, 제형, 용량, 차이점 등"
+  - type: dropdown
+    id: approval
+    attributes:
+      label: 검증 단계
+      options:
+        - "원본 확인 필요"
+        - "원본 확인 완료, 판매처 미확인"
+        - "판매처 상세 페이지 확인, 검수 필요"
+        - "발행 검토 요청"
+    validations:
+      required: true

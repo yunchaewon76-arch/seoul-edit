@@ -35,12 +35,7 @@ export default function Home(){
   </section>
   <section className="se-home-video" aria-labelledby="se-home-video-heading">
     <div className="section-heading"><div><span className="section-num">02 / KOREAN CREATOR WATCH</span><h2 id="se-home-video-heading">Видео, <em>которые обсуждают</em></h2></div><Link className="section-action" href="/video">Все видео <span>↗</span></Link></div>
-    <p className="se-home-video-deck">Собираем оригинальные ролики корейских авторов, разбираем их на русском и аккуратно проверяем упомянутые продукты. По темам — в специальном каталоге.</p>
-    <nav className="se-home-video-tabs" aria-label="Видеокаталог по темам">
-      <Link href="/video?category=beauty">Красота ↗</Link>
-      <Link href="/video?category=fashion">Мода ↗</Link>
-      <Link href="/video?category=trends">Тренды ↗</Link>
-    </nav>
+    <p className="se-home-video-deck">Смотрим корейские видео в оригинале, объясняем контекст на русском и проверяем, какие продукты действительно упоминаются.</p>
     <div className="se-video-grid">{videoStories.map(s=><VideoStoryCard key={s.slug} story={s}/>)}</div>
   </section>
   <section className="mag-section" aria-labelledby="latest-heading">

@@ -3,6 +3,7 @@ import Link from "next/link";
 import {notFound} from "next/navigation";
 import VideoPlayer from "@/components/VideoPlayer";
 import VideoProductShelf from "@/components/VideoProductShelf";
+import CandidateProductShelf from "@/components/CandidateProductShelf";
 import {videoStories,findVideoStory,videoYouTubeUrl} from "@/data/video-stories";
 import {confirmedVideoProducts} from "@/data/video-products";
 export function generateStaticParams(){return videoStories.map(s=>({slug:s.slug}));}
@@ -28,9 +29,11 @@ export default async function VideoDetail({params}:{params:Promise<{slug:string}
     {story.takeaways.length?story.takeaways.map((p,i)=><p key={i}>{p}</p>):<p>У нас пока недостаточно подтверждённых данных, чтобы пересказать содержание этого видео. Мы сохраняем ссылку на оригинал и не придумываем ни тему, ни товары, ни советы автора.</p>}
     <div className="se-proof-note"><strong>Границы проверки</strong><p>{story.sourceNote}</p>
      <a href={videoYouTubeUrl(story.youtubeId)} target="_blank" rel="noopener noreferrer">Смотреть исходный ролик ↗</a>
+     {story.sourceUrl&&<p><a href={story.sourceUrl} target="_blank" rel="noopener noreferrer">Источник проверки метаданных ↗</a></p>}
     </div>
    </div>
   </div>
+  <CandidateProductShelf videoSlug={story.slug}/>
   <VideoProductShelf products={products}/>
   <div className="se-video-back"><Link href="/video">← Другие видео в CREATOR WATCH</Link></div>
  </div>;

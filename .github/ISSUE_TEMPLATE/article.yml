@@ -1,0 +1,41 @@
+name: "기사 아이디어 / Editorial story"
+description: "Beauty·Fashion·Trends 분야의 기사 제안"
+title: "[ARTICLE] "
+labels: ["editorial"]
+body:
+  - type: input
+    id: subject
+    attributes:
+      label: 기사 주제
+    validations:
+      required: true
+  - type: dropdown
+    id: section
+    attributes:
+      label: 카테고리
+      options:
+        - "Beauty / Красота"
+        - "Fashion / Мода"
+        - "Trends / Тренды"
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: 한국 원문과 추가 출처 링크
+      description: 이용 권한 확인 없는 유튜브 화면 캡처나 타 기사 전문은 올리지 마세요.
+    validations:
+      required: true
+  - type: textarea
+    id: angle
+    attributes:
+      label: 러시아 독자에게 유용한 이유 / 해설 포인트
+  - type: dropdown
+    id: status
+    attributes:
+      label: 진행 단계
+      options:
+        - "아이디어"
+        - "리서치 중"
+        - "원문 검증 완료"
+        - "러시아어 초안 검수 요청"

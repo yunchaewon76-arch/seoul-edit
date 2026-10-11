@@ -1,3 +1,4 @@
+import verifiedProductRecords from "./verified-video-products.json";
 /**
  * NO affiliate claims, prices or live stock without verification.
  * Evidence-based product list for specific reviewed videos is currently empty.
@@ -17,7 +18,10 @@ export type EditorialProduct = {
  comparisonSourceUrl?:string;
  verificationNote:string;
 };
-export const confirmedVideoProducts:EditorialProduct[]=[];
+/** Products are published only after editorial verification. The JSON seed is empty. */
+export const confirmedVideoProducts:EditorialProduct[]=
+ (verifiedProductRecords as unknown as EditorialProduct[])
+ .filter(p=>p.videoSlug&&p.brand&&p.name&&p.verificationNote?.trim());
 export const screenshotReferenceProducts = [
  {brand:"Swiss Perfection",name:"Urban Shield & Glow",note:"Название видно на присланном референсе. Участие в конкретном видео не подтверждено."},
  {brand:"Sulwhasoo",name:"UV Daily Tone Up Sunscreen",note:"Название видно на присланном референсе. Российский магазин, цена и наличие не проверены."}

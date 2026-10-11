@@ -682,3 +682,13 @@ body { min-width:320px }
  .se-section-video-empty{padding:24px 18px}
 }
 @media(prefers-reduced-motion:reduce){.se-video-filter{transition:none}}
+
+
+/* Research-stage product mentions: not endorsements or shopping links. */
+.se-candidate-shelf{margin:91px 0 20px}
+.se-candidate-card .se-product-art{max-height:320px}
+.se-candidate-monogram{font-size:clamp(38px,6vw,82px)!important;font-weight:400!important;color:#946e6b!important}
+.se-candidate-monogram small{font:normal 9px Arial,sans-serif!important;letter-spacing:.15em!important;color:#7b7776!important}
+.se-product-research-source{display:inline-block;color:#68605b;font-size:11px;line-height:1.5;text-decoration:underline;text-underline-offset:3px;margin-top:11px;word-break:break-word}
+.se-product-research-source:hover{color:#b82e36}
+@media(max-width:767px){.se-candidate-shelf{margin-top:67px}}
