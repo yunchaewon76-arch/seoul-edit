@@ -1,7 +1,6 @@
 name: "기사 아이디어 / Editorial story"
 description: "Beauty·Fashion·Trends 분야의 기사 제안"
 title: "[ARTICLE] "
-labels: ["editorial"]
 body:
   - type: input
     id: subject

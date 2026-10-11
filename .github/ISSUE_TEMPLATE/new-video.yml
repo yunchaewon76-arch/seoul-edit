@@ -1,7 +1,6 @@
 name: "영상 콘텐츠 제안 / Creator Watch"
 description: "한국 유튜브 영상을 검토하고 SEOUL EDIT에 등록하는 편집 요청 (자동 발행되지 않음)"
 title: "[VIDEO] "
-labels: ["editorial"]
 body:
   - type: markdown
     attributes:

@@ -1,7 +1,6 @@
 name: "영상 속 제품 검증 / Product verification"
 description: "원제품 또는 대체품의 러시아 구매처를 조사하는 편집 요청 (자동 발행되지 않음)"
 title: "[PRODUCT] "
-labels: ["editorial"]
 body:
   - type: markdown
     attributes:
