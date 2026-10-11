@@ -13,7 +13,7 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
  return story?{title:story.headline,description:story.deck}:{title:"Видео не найдено"};
 }
 export default async function VideoDetail({params}:{params:Promise<{slug:string}>}){
- const {slug}=await params;const story=findVideoStory(slug);
+ const {slug}=await params;const story=(await getAllCreatorVideos()).find(s=>s.slug===slug);
  if(!story)notFound();
  const products=await getVerifiedProducts(story.slug);
  return <div className="container se-video-detail">
