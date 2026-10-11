@@ -1,5 +1,7 @@
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
+import VideoStoryCard from "@/components/VideoStoryCard";
+import {videoStories} from "@/data/video-stories";
 import {sortedStories,categoryName} from "@/data/articles";
 import {photoFor} from "@/data/visuals";
 
@@ -30,6 +32,11 @@ export default function Home(){
   <section className="signature-intro" aria-label="Что такое SEOUL SIGNAL">
    <div className="signature-index"><span>01 / OUR SIGNATURE FORMAT</span><strong>✳</strong></div>
    <div><span className="eyebrow">INTRODUCING SEOUL SIGNAL</span><h2>Тренд — это только <em>начало истории.</em></h2><p>Мы ищем, где и как зародилась идея, проверяем данные и объясняем, что стоит за заголовком. Без выдуманных «хитов Кореи» и навязчивого шопинга.</p><Link href="/signal" className="text-link">Исследовать сигналы <span>↗</span></Link></div>
+  </section>
+  <section className="se-home-video" aria-labelledby="se-home-video-heading">
+    <div className="section-heading"><div><span className="section-num">02 / KOREAN CREATOR WATCH</span><h2 id="se-home-video-heading">Видео, <em>которые обсуждают</em></h2></div><Link className="section-action" href="/video">Все видео <span>↗</span></Link></div>
+    <p className="se-home-video-deck">Смотрим корейские видео в оригинале, объясняем контекст на русском и проверяем, какие продукты действительно упоминаются.</p>
+    <div className="se-video-grid">{videoStories.map(s=><VideoStoryCard key={s.slug} story={s}/>)}</div>
   </section>
   <section className="mag-section" aria-labelledby="latest-heading">
    <div className="section-heading"><div><span className="section-num">02 / THE RESEARCH DESK</span><h2 id="latest-heading">Важное <em>с контекстом</em></h2></div><Link className="section-action" href="/signal">Все материалы <span>↗</span></Link></div>

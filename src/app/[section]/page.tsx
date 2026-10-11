@@ -2,6 +2,8 @@ import type {Metadata} from "next";
 import {notFound} from "next/navigation";
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
+import VideoStoryCard from "@/components/VideoStoryCard";
+import {videoStories} from "@/data/video-stories";
 import {sortedStories,categoryName,type Category} from "@/data/articles";
 const sections={
  beauty:{label:"Красота",title:"Beauty, но с контекстом",note:"Бьюти-инновации, ингредиенты, корейские рейтинги и научные объяснения."},
@@ -20,6 +22,8 @@ export default async function SectionPage({params}:{params:Promise<{section:stri
   <h1>{details.title}</h1><p className="intro">{details.note}</p>
   <p className="editorial-listing-note">{items.length} авторских материалов · ссылки на первоисточники в каждой публикации</p>
   <div className="story-grid">{items.map(s=><ArticleCard key={s.slug} story={s}/>)}</div>
+  {section==="beauty"&&<section className="se-section-video"><div className="section-heading"><div><span className="section-num">CREATOR WATCH / ORIGINAL VIDEO</span><h2>Смотреть <em>и понимать</em></h2></div><Link className="section-action" href="/video">Все видео ↗</Link></div><div className="se-video-grid">{videoStories.map(s=><VideoStoryCard key={s.slug} story={s}/>)}</div></section>}
+
   <div className="editorial-bottom-link"><Link href="/signal">Как мы исследуем тренды ↗</Link></div>
  </div>;
 }

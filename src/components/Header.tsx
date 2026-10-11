@@ -16,7 +16,7 @@ export default function Header(){
     </Link>
    </div>
    <div className="nav-shell"><div className="container nav-inner">
-    <nav aria-label="Главное меню"><Link href="/">Главная</Link><Link href="/signal" className="signal-nav-link">✳ SEOUL SIGNAL</Link><Link href="/beauty">Красота</Link><Link href="/fashion">Мода</Link><Link href="/trends">Тренды</Link><Link href="/ask">ASK SEOUL</Link></nav>
+    <nav aria-label="Главное меню"><Link href="/">Главная</Link><Link href="/signal" className="signal-nav-link">✳ SEOUL SIGNAL</Link><Link href="/beauty">Красота</Link><Link href="/fashion">Мода</Link><Link href="/trends">Тренды</Link><Link href="/video" className="creator-nav-link">CREATOR WATCH</Link><Link href="/ask">ASK SEOUL</Link></nav>
     <Link href="/search" className="search-link" aria-label="Поиск">Поиск <span aria-hidden="true">⌕</span></Link>
    </div></div>
   </header>
