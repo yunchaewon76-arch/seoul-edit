@@ -9,5 +9,5 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false }
 };
 export default function RootLayout({children}:{children:React.ReactNode}) {
-  return <html lang="ru"><body><Header/><main>{children}</main><Footer/></body></html>;
+  return <html lang="ru"><body><Header/><main id="main-content">{children}</main><Footer/></body></html>;
 }
