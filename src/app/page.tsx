@@ -29,6 +29,13 @@ export default function Home() {
    </div>
   </section>
   <div className="under-cover"><span>THE EDITED VIEW</span><p>Самое интересное из мира корейской красоты и моды — с контекстом, без информационного шума.</p><span>SCROLL TO DISCOVER ↓</span></div>
+  <section className="match-promo" aria-label="SEOUL MATCH">
+   <div><span className="match-promo-label">✳ INTRODUCING SEOUL MATCH</span>
+    <h2>Корейские тренды. <em>Твой выбор.</em></h2>
+    <p>Три вопроса о ваших интересах, бюджете и городе. Только проверенные ссылки — никаких придуманных остатков.</p>
+   </div>
+   <Link href="/match" className="match-button">Найти свой MATCH ↗</Link>
+  </section>
   <section className="mag-section" aria-labelledby="latest-heading">
    <div className="section-heading"><div><span className="section-num">01 / THE LATEST</span><h2 id="latest-heading">Новые <em>истории</em></h2></div><Link className="section-action" href="/trends">Смотреть все материалы <span>↗</span></Link></div>
    <div className="story-grid">{latest.map(s=><ArticleCard key={s.slug} story={s}/>)}</div>

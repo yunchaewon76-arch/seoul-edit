@@ -23,6 +23,7 @@ export default function Header() {
           <Link href="/beauty">Красота</Link>
           <Link href="/fashion">Мода</Link>
           <Link href="/trends">Тренды</Link>
+          <Link href="/match" className="match-nav-link">✳ SEOUL MATCH</Link>
         </nav>
         <span className="nav-caption">YOUR DAILY DOSE OF SEOUL</span>
         <Link href="/search" className="search-link" aria-label="Перейти к поиску">Поиск <span aria-hidden="true">⌕</span></Link>
