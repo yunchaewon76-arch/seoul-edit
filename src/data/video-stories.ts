@@ -1,11 +1,12 @@
-/** Editorial video references. All identities/summaries must be checked against the video before full publication. */
-export type VideoStory = {
+/** Curated Korean creator videos. Category is assigned only after the video theme is verified. */
+export type VideoCategory="beauty"|"fashion"|"trends";
+export type VideoStory={
  slug:string;
  youtubeId:string;
  headline:string;
  originalTitle:string|null;
  creator:string|null;
- category:"beauty"|"fashion";
+ category:VideoCategory|null;
  reviewStatus:"identified"|"pending";
  publishedAt:string|null;
  deck:string;
@@ -13,6 +14,7 @@ export type VideoStory = {
  sourceNote:string;
  linkedProducts:string[];
 };
+export const videoCategoryLabels:Record<VideoCategory,string>={beauty:"Красота",fashion:"Мода",trends:"Тренды"};
 export const videoStories:VideoStory[]=[
  {
   slug:"taengkodok-ep03-taeyeon-eunchae",
@@ -34,7 +36,7 @@ export const videoStories:VideoStory[]=[
   slug:"reader-video-02-under-review",
   youtubeId:"po4uyYWD4nY",
   headline:"Видео из подборки читателя №02 — редакционная проверка",
-  originalTitle:null,creator:null,category:"beauty",reviewStatus:"pending",publishedAt:null,
+  originalTitle:null,creator:null,category:null,reviewStatus:"pending",publishedAt:null,
   deck:"Второй оригинальный ролик из вашей подборки. Заголовок, автор, содержание и косметика пока не подтверждены независимой проверкой.",
   takeaways:[],
   sourceNote:"Ссылка получена от читателя. Не удалось надёжно подтвердить название, создателя и упомянутые продукты; редакционная статья появится после просмотра оригинала.",
@@ -44,3 +46,5 @@ export const videoStories:VideoStory[]=[
 export const findVideoStory=(slug:string)=>videoStories.find(s=>s.slug===slug);
 export const videoYouTubeUrl=(id:string)=>"https://www.youtube.com/watch?v="+id;
 export const videoThumbnail=(id:string)=>"https://i.ytimg.com/vi/"+id+"/hqdefault.jpg";
+export const videosInCategory=(category:VideoCategory)=>videoStories.filter(s=>s.category===category&&s.reviewStatus==="identified");
+export const countVideos=(category:VideoCategory|"all")=>category==="all"?videoStories.length:videosInCategory(category).length;

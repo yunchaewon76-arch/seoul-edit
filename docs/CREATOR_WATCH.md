@@ -55,3 +55,12 @@
 - 독자 질문 접수/영상 제보 폼 (스팸 방지·개인정보 안내·서버 연결 후)
 - 영상별 타임스탬프·제품 확인 화면과 게시 전 체크리스트
 - 실제 영상과 제품 확인 작업은 링크 1개씩 별도 진행
+
+
+## 카테고리 필터 / 섹션 노출 (2026-10-11)
+- `/video`: 전체 2개(기존 자료) / `?category=beauty` / `?category=fashion` / `?category=trends` 네비게이션.
+- 각 `/beauty`, `/fashion`, `/trends`에서 `CreatorWatchSection`을 보여준다. 해당 섹션은 **검수 완료된 동일 주제 영상만** 출력한다. 영상이 없으면 "검증 중" empty-state + 전체 링크.
+- 독자 제보 2번 영상은 저자/주제 미확인 상태이므로 `category:null`, `reviewStatus:"pending"`으로 유지; 전체 목록에만 보인다.
+- 첫 영상은 Beauty 소속. Fashion과 Trends는 현재 검증된 영상 0개.
+- 새 영상 추가 시 `src/data/video-stories.ts`에서 `category:"beauty"|"fashion"|"trends"`와 `reviewStatus:"identified"`로 검수 후 등록; 이후 카테고리 페이지에 자동 노출된다.
+- 모든 링크는 실제 영상 상세 페이지 `/video/[slug]`로 연결되며 기존 YouTube 원본 재생 기능 유지.
