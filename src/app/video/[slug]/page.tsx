@@ -1,4 +1,6 @@
 import type {Metadata} from "next";
+
+export const revalidate=60;
 import Link from "next/link";
 import {notFound} from "next/navigation";
 import VideoPlayer from "@/components/VideoPlayer";

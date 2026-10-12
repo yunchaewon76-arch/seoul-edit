@@ -5,7 +5,7 @@ export const creatorVideo=defineType({
   defineField({name:"headline",title:"러시아어 기사 제목",type:"string",validation:R=>R.required()}),
   defineField({name:"slug",title:"기사 URL",type:"slug",options:{source:"headline",maxLength:95},validation:R=>R.required()}),
   defineField({name:"youtubeId",title:"YouTube ID (11자)",type:"string",validation:R=>R.required().regex(/^[\w-]{11}$/, {name:"YouTube ID"})}),
-  defineField({name:"editorialStatus",title:"기사 승인",type:"string",initialValue:"draft",options:{list:[
+  defineField({name:"editorialStatus",title:"편집 단계 (공개는 Sanity Publish 버튼)",description:"내부 작업 상태를 기록하는 용도야. 실제 사이트 공개/수정 반영은 Sanity의 Publish 버튼으로 관리돼.",type:"string",initialValue:"draft",options:{list:[
    {title:"초안",value:"draft"},{title:"검수 중",value:"review"},{title:"발행 승인",value:"published"}
   ],layout:"radio"},validation:R=>R.required()}),
   defineField({name:"reviewStatus",title:"원본 확인",type:"string",initialValue:"pending",options:{list:[
