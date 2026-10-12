@@ -20,25 +20,32 @@ export const creatorVideo=defineType({
   defineField({name:"deck",title:"러시아어 요약",type:"text",rows:4,validation:R=>R.required()}),
   defineField({
    name:"takeaways",
-   title:"확인된 해설 문단 + 이미지",
-   description:"문단과 이미지를 원하는 순서로 추가해. 문단 사이에 사진을 넣으려면 아래 + 버튼 → 이미지 / Фото를 선택해. 기존 문단은 유지돼.",
+   title:"확인된 해설 문단 / Текст",
+   description:"기존 러시아어 문단이 그대로 보관돼. 문단 사이에 이미지를 넣고 싶다면 바로 아래 '기사 중간 이미지'에서 사진을 업로드하고 위치를 선택해.",
    type:"array",
-   of:[
-    {type:"text",title:"문단 / Текст",rows:4},
-    {
-     type:"image",title:"이미지 / Фото",
-     options:{hotspot:true},
-     fields:[
-      defineField({name:"alt",title:"이미지 설명 · 접근성 (러시아어)",type:"string",validation:R=>R.required()}),
-      defineField({name:"caption",title:"사진 아래 표시할 설명 (러시아어)",type:"string",validation:R=>R.required()}),
-      defineField({name:"credit",title:"사진 출처 · 크레딧",type:"string",validation:R=>R.required()}),
-      defineField({name:"rightsConfirmed",title:"이미지 사용 권한 확인",type:"boolean",
-       description:"본인 소유 또는 사용 허가를 받은 이미지만 업로드. 유튜브 화면 캡처는 별도 권리를 확인해.",
-       initialValue:false,
-       validation:R=>R.custom(value=>value===true?true:"사진 사용 권한을 확인해 주세요.")})
-     ]
-    }
-   ]
+   of:[{type:"text",title:"해설 문단",rows:4}]
+  }),
+  defineField({
+   name:"editorialImages",
+   title:"기사 중간 이미지 / Фото",
+   description:"사진을 업로드한 후 '몇 번째 문단 뒤'에 넣을지 설정해. 0이면 첫 문단 앞, 1이면 첫 문단 뒤, 2이면 두 번째 문단 뒤야. 사진은 여기서 위아래로 정렬할 수 있어.",
+   type:"array",
+   of:[{
+    type:"image",title:"기사 이미지",
+    options:{hotspot:true},
+    fields:[
+     defineField({name:"afterParagraph",title:"몇 번째 문단 뒤에 삽입? (0 = 본문 맨 앞)",type:"number",
+      initialValue:1,validation:R=>R.required().integer().min(0)}),
+     defineField({name:"alt",title:"이미지 접근성 설명 (러시아어)",type:"string",validation:R=>R.required()}),
+     defineField({name:"caption",title:"사진 설명 (러시아어)",type:"string",validation:R=>R.required()}),
+     defineField({name:"credit",title:"사진 출처 · 크레딧",type:"string",validation:R=>R.required()}),
+     defineField({name:"rightsConfirmed",title:"이미지 사용 권한 확인",type:"boolean",
+      description:"직접 소유하거나 사용 허가를 받은 사진만 올려줘. 유튜브 영상 스크린샷이나 브랜드 공식 사진도 별도 허가가 필요할 수 있어.",
+      initialValue:false,
+      validation:R=>R.custom(v=>v===true?true:"사진 사용 권한을 확인해야 해.")})
+    ],
+    preview:{select:{media:"asset",title:"caption",subtitle:"credit"}}
+   }]
   }),
   defineField({name:"sourceUrl",title:"메타데이터 확인 출처",type:"url"}),
   defineField({name:"sourceNote",title:"검증 완료/미완료 메모",type:"text",rows:4,validation:R=>R.required()}),

@@ -5,7 +5,7 @@ import {videoStories as seedVideos,type VideoStory,type VideoCategory,type Video
 import {confirmedVideoProducts,type EditorialProduct,safeRetailerLink} from "@/data/video-products";
 
 const articleQuery='*[_type=="editorialArticle" && editorialStatus=="published" && defined(slug.current)]|order(publishedAt desc){"slug":slug.current,title,excerpt,category,format,"date":publishedAt,tags,"body":bodyParagraphs,signal,context,caution,readingMinutes,"coverImageUrl":coverImage.asset->url,"coverImageAlt":coverImage.alt,"coverImageCredit":coverImage.credit,sources[]{title,url,kind}}';
-const videoQuery='*[_type=="creatorVideo" && editorialStatus=="published" && defined(slug.current)]|order(publishedAt desc){"slug":slug.current,youtubeId,headline,originalTitle,creator,category,reviewStatus,publishedAt,deck,takeaways,"inlineImages":takeaways[_type=="image"]{_key,"url":asset->url,alt,caption,credit},sourceNote,sourceUrl,linkedProducts}';
+const videoQuery='*[_type=="creatorVideo" && editorialStatus=="published" && defined(slug.current)]|order(publishedAt desc){"slug":slug.current,youtubeId,headline,originalTitle,creator,category,reviewStatus,publishedAt,deck,takeaways,"inlineImages":editorialImages[]{_key,"url":asset->url,alt,caption,credit,afterParagraph,rightsConfirmed},sourceNote,sourceUrl,linkedProducts}';
 const productQuery='*[_type=="videoProduct" && editorialStatus=="published" && defined(video->slug.current)]{"id":_id,"videoSlug":video->slug.current,brand,name,variant,originalOrAlternative,alternativeFor,whyComparable,russianRetailer,russianProductUrl,checkedAt,comparisonSourceUrl,verificationNote,"imageUrl":image.asset->url}';
 
 type SanityArticle=Partial<Article>&{slug?:string;coverImageUrl?:string;coverImageAlt?:string;coverImageCredit?:string};
@@ -28,22 +28,43 @@ function normalizeArticle(raw:SanityArticle):Article|null{
   sources,coverImageUrl:raw.coverImageUrl?.startsWith("https://")?raw.coverImageUrl:undefined,
   coverImageAlt:raw.coverImageAlt||"Редакционное изображение",coverImageCredit:raw.coverImageCredit||"SEOUL EDIT"};
 }
-type SanityImageInfo={_key:string;url:string|null;alt?:string;caption?:string;credit?:string};
+type SanityImageInfo={
+ _key:string;
+ url:string|null;
+ alt?:string;
+ caption?:string;
+ credit?:string;
+ afterParagraph?:number;
+ rightsConfirmed?:boolean;
+};
 type SanityVideo=Omit<VideoStory,"takeaways">&{takeaways?:unknown[];inlineImages?:SanityImageInfo[]};
 
+/** Backward compatible: imported string[] paragraphs never need migrating. */
 function normalizeTakeaways(raw:SanityVideo):VideoTakeaway[]{
- const images=new Map((Array.isArray(raw.inlineImages)?raw.inlineImages:[])
-  .filter(image=>typeof image?._key==="string").map(image=>[image._key,image]));
- const items=Array.isArray(raw.takeaways)?raw.takeaways:[];
- return items.flatMap((item):VideoTakeaway[]=>{
-  if(typeof item==="string")return item.trim()?[item]:[];
-  if(!item||typeof item!=="object"||("_type" in item)&&item._type!=="image")return [];
-  if(!("_key" in item)||typeof item._key!=="string")return [];
-  const img=images.get(item._key);
-  if(!img||typeof img.url!=="string"||!img.url.startsWith("https://cdn.sanity.io/images/")||
-     !img.alt?.trim()||!img.caption?.trim()||!img.credit?.trim())return [];
-  return [{_type:"image",_key:img._key,url:img.url,alt:img.alt,caption:img.caption,credit:img.credit}];
- });
+ const paragraphs=Array.isArray(raw.takeaways)?raw.takeaways.filter((p):p is string=>typeof p==="string"&&!!p.trim()):[];
+ const images=(Array.isArray(raw.inlineImages)?raw.inlineImages:[]).filter(
+  (image):image is SanityImageInfo & {url:string;alt:string;caption:string;credit:string} =>
+   typeof image?._key==="string"&&typeof image.url==="string"&&
+   image.url.startsWith("https://cdn.sanity.io/images/")&&
+   !!image.alt?.trim()&&!!image.caption?.trim()&&!!image.credit?.trim()&&
+   image.rightsConfirmed===true
+ );
+ // Store positioning separately in Sanity; interleave at render time.
+ const positioned=images.map((image,index)=>({
+  after:Math.min(paragraphs.length,Math.max(0,Number.isInteger(image.afterParagraph)?image.afterParagraph!:paragraphs.length)),
+  index,
+  image:{_type:"image" as const,_key:image._key,url:image.url,alt:image.alt,caption:image.caption,credit:image.credit}
+ })).sort((a,b)=>a.after-b.after||a.index-b.index);
+ const output:VideoTakeaway[]=[];
+ let nextImage=0;
+ for(let i=0;i<=paragraphs.length;i++){
+  if(i>0)output.push(paragraphs[i-1]);
+  while(nextImage<positioned.length&&positioned[nextImage].after===i){
+   output.push(positioned[nextImage].image);
+   nextImage++;
+  }
+ }
+ return output;
 }
 function normalizeVideo(raw:SanityVideo):VideoStory|null{
  if(!raw.slug||!raw.headline||!/^[a-zA-Z0-9_-]{11}$/.test(raw.youtubeId))return null;
