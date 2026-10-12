@@ -1,10 +1,20 @@
 import initialVideos from "./creator-videos.json";
 /** The editorial archive uses a human-editable JSON source of truth. */
 export type VideoCategory="beauty"|"fashion"|"trends";
+export type VideoInlineImage={
+ _type:"image";
+ _key:string;
+ url:string;
+ alt:string;
+ caption?:string;
+ credit?:string;
+};
+/** Existing text paragraphs and new inline images coexist in the same ordered list. */
+export type VideoTakeaway=string|VideoInlineImage;
 export type VideoStory={
  slug:string;youtubeId:string;headline:string;originalTitle:string|null;creator:string|null;
  category:VideoCategory|null;reviewStatus:"identified"|"pending";publishedAt:string|null;
- deck:string;takeaways:string[];sourceNote:string;sourceUrl:string|null;linkedProducts:string[];
+ deck:string;takeaways:VideoTakeaway[];sourceNote:string;sourceUrl:string|null;linkedProducts:string[];
 };
 export const videoCategoryLabels:Record<VideoCategory,string>={beauty:"Красота",fashion:"Мода",trends:"Тренды"};
 const validId=(s:string)=>/^[a-zA-Z0-9_-]{11}$/.test(s);

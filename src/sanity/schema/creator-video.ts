@@ -18,7 +18,28 @@ export const creatorVideo=defineType({
   defineField({name:"creator",title:"유튜버/채널",type:"string"}),
   defineField({name:"publishedAt",title:"유튜브 공개일",type:"date"}),
   defineField({name:"deck",title:"러시아어 요약",type:"text",rows:4,validation:R=>R.required()}),
-  defineField({name:"takeaways",title:"확인된 해설 문단",type:"array",of:[{type:"text",rows:4}]}),
+  defineField({
+   name:"takeaways",
+   title:"확인된 해설 문단 + 이미지",
+   description:"문단과 이미지를 원하는 순서로 추가해. 문단 사이에 사진을 넣으려면 아래 + 버튼 → 이미지 / Фото를 선택해. 기존 문단은 유지돼.",
+   type:"array",
+   of:[
+    {type:"text",title:"문단 / Текст",rows:4},
+    {
+     type:"image",title:"이미지 / Фото",
+     options:{hotspot:true},
+     fields:[
+      defineField({name:"alt",title:"이미지 설명 · 접근성 (러시아어)",type:"string",validation:R=>R.required()}),
+      defineField({name:"caption",title:"사진 아래 표시할 설명 (러시아어)",type:"string",validation:R=>R.required()}),
+      defineField({name:"credit",title:"사진 출처 · 크레딧",type:"string",validation:R=>R.required()}),
+      defineField({name:"rightsConfirmed",title:"이미지 사용 권한 확인",type:"boolean",
+       description:"본인 소유 또는 사용 허가를 받은 이미지만 업로드. 유튜브 화면 캡처는 별도 권리를 확인해.",
+       initialValue:false,
+       validation:R=>R.custom(value=>value===true?true:"사진 사용 권한을 확인해 주세요.")})
+     ]
+    }
+   ]
+  }),
   defineField({name:"sourceUrl",title:"메타데이터 확인 출처",type:"url"}),
   defineField({name:"sourceNote",title:"검증 완료/미완료 메모",type:"text",rows:4,validation:R=>R.required()}),
   defineField({name:"linkedProducts",title:"제품 연결 (운영 메모)",type:"array",of:[{type:"string"}],description:"상세 제품은 제품 관리 문서에서 연결하세요."})

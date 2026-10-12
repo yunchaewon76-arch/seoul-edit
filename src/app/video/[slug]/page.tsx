@@ -2,6 +2,7 @@ import type {Metadata} from "next";
 import Link from "next/link";
 import {notFound} from "next/navigation";
 import VideoPlayer from "@/components/VideoPlayer";
+import VideoEditorialBody from "@/components/VideoEditorialBody";
 import VideoProductShelf from "@/components/VideoProductShelf";
 import CandidateProductShelf from "@/components/CandidateProductShelf";
 import {videoStories,videoYouTubeUrl} from "@/data/video-stories";
@@ -27,7 +28,7 @@ export default async function VideoDetail({params}:{params:Promise<{slug:string}
    <div className="se-video-sidebar"><span>EDITORIAL NOTES</span><strong>Watch.<br/>Understand.<br/>Verify.</strong></div>
    <div className="se-video-copy">
     <span className="eyebrow">{story.reviewStatus==="identified"?"ЧТО УСТАНОВЛЕНО ПО ДОСТУПНЫМ ИСТОЧНИКАМ":"РЕДАКЦИОННАЯ ПРОВЕРКА В ПРОЦЕССЕ"}</span>
-    {story.takeaways.length?story.takeaways.map((p,i)=><p key={i}>{p}</p>):<p>У нас пока недостаточно подтверждённых данных, чтобы пересказать содержание этого видео. Мы сохраняем ссылку на оригинал и не придумываем ни тему, ни товары, ни советы автора.</p>}
+    <VideoEditorialBody items={story.takeaways}/>
     <div className="se-proof-note"><strong>Границы проверки</strong><p>{story.sourceNote}</p>
      <a href={videoYouTubeUrl(story.youtubeId)} target="_blank" rel="noopener noreferrer">Смотреть исходный ролик ↗</a>
      {story.sourceUrl&&<p><a href={story.sourceUrl} target="_blank" rel="noopener noreferrer">Источник проверки метаданных ↗</a></p>}
