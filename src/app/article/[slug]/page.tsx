@@ -1,3 +1,5 @@
+import approvedPosts from "@/data/approved-posts.json";
+import ApprovedPostPage from "@/components/ApprovedPostPage";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {notFound} from "next/navigation";
@@ -10,7 +12,8 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
  const {slug}=await params;const story=(await getAllArticles()).find(s=>s.slug===slug);return story?{title:story.title,description:story.excerpt}:{title:"Статья не найдена"};
 }
 export default async function ArticlePage({params}:{params:Promise<{slug:string}>}){
- const {slug}=await params;const sortedStories=await getAllArticles();const story=sortedStories.find(s=>s.slug===slug);if(!story)notFound();
+ const {slug}=await params;const approvedPost=approvedPosts.find(post=>post.slug===slug);if(approvedPost)return <ApprovedPostPage post={approvedPost}/>;
+ const sortedStories=await getAllArticles();const story=sortedStories.find(s=>s.slug===slug);if(!story)notFound();
  const related=sortedStories.filter(s=>s.slug!==slug&&s.category===story.category).slice(0,3);
  const photo=photoFor(story);
  return <div className="container article-wrap signal-article">
