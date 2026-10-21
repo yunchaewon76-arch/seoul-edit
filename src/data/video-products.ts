@@ -34,7 +34,8 @@ export function safeRetailerLink(product:EditorialProduct):string|null{
   if(url.pathname.length<5 || ["/search","/catalog","/brands"].includes(url.pathname))return null;
   const date=Date.parse(product.checkedAt+"T00:00:00Z");
   const age=(Date.now()-date)/86400000;
-  if(!Number.isFinite(date)||age<0||age>14)return null;
+  // A local calendar date may be tomorrow in UTC for part of the day.
+  if(!Number.isFinite(date)||age< -1||age>14)return null;
   if(product.originalOrAlternative==="alternative" && (!product.alternativeFor||!product.whyComparable||!product.comparisonSourceUrl))return null;
   return url.toString();
  }catch{return null;}
