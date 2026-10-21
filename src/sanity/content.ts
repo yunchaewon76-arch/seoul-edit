@@ -4,11 +4,11 @@ import {stories as seedArticles,type Article,type Category} from "@/data/article
 import {videoStories as seedVideos,type VideoStory,type VideoCategory,type VideoTakeaway} from "@/data/video-stories";
 import {confirmedVideoProducts,type EditorialProduct,safeRetailerLink} from "@/data/video-products";
 
-const articleQuery='*[_type=="editorialArticle" && editorialStatus=="published" && defined(slug.current)]|order(publishedAt desc){"slug":slug.current,title,excerpt,category,format,"date":publishedAt,tags,"body":bodyParagraphs,signal,context,caution,readingMinutes,"coverImageUrl":coverImage.asset->url,"coverImageAlt":coverImage.alt,"coverImageCredit":coverImage.credit,sources[]{title,url,kind}}';
+const articleQuery='*[_type=="editorialArticle" && editorialStatus=="published" && defined(slug.current)]|order(publishedAt desc){"slug":slug.current,title,excerpt,category,format,"date":publishedAt,tags,"body":bodyParagraphs,signal,context,caution,readingMinutes,"coverImageUrl":coverImage.asset->url,"coverImageAlt":coverImage.alt,"coverImageCredit":coverImage.credit,coverIllustrationUrl,priority,markdown,sources[]{title,url,kind}}';
 const videoQuery='*[_type=="creatorVideo" && defined(slug.current)]|order(publishedAt desc){"slug":slug.current,youtubeId,headline,originalTitle,creator,category,reviewStatus,publishedAt,deck,takeaways,"inlineImages":editorialImages[]{_key,"url":asset->url,alt,caption,credit,afterParagraph,rightsConfirmed},sourceNote,sourceUrl,linkedProducts}';
 const productQuery='*[_type=="videoProduct" && editorialStatus=="published" && defined(video->slug.current)]{"id":_id,"videoSlug":video->slug.current,brand,name,variant,originalOrAlternative,alternativeFor,whyComparable,russianRetailer,russianProductUrl,checkedAt,comparisonSourceUrl,verificationNote,"imageUrl":image.asset->url}';
 
-type SanityArticle=Partial<Article>&{slug?:string;coverImageUrl?:string;coverImageAlt?:string;coverImageCredit?:string};
+type SanityArticle=Partial<Article>&{slug?:string;coverImageUrl?:string;coverImageAlt?:string;coverImageCredit?:string;coverIllustrationUrl?:string;markdown?:string;priority?:"P1"|"P2"|"P3"};
 async function load<T>(query:string):Promise<T[]>{
  if(!cmsClient)return [];
  try{return await cmsClient.fetch<T[]>(query,{}, {next:{revalidate:60}});}
@@ -24,8 +24,10 @@ function normalizeArticle(raw:SanityArticle):Article|null{
  return {slug:raw.slug,title:raw.title,excerpt:raw.excerpt,category:raw.category as Category,
   format:raw.format==="brief"?"brief":"editorial",date,cover:"cms",tags:Array.isArray(raw.tags)?raw.tags:[],
   body:raw.body.filter(x=>typeof x==="string"&&x.trim()),signal:raw.signal,context:raw.context,
+  priority:raw.priority==="P1"||raw.priority==="P2"||raw.priority==="P3"?raw.priority:undefined,
+  markdown:typeof raw.markdown==="string"&&raw.markdown.trim()?raw.markdown:undefined,
   caution:raw.caution,readingMinutes:typeof raw.readingMinutes==="number"?raw.readingMinutes:4,
-  sources,coverImageUrl:raw.coverImageUrl?.startsWith("https://")?raw.coverImageUrl:undefined,
+  sources,coverImageUrl:raw.coverImageUrl?.startsWith("https://")?raw.coverImageUrl:raw.coverIllustrationUrl?.startsWith("/editorial/")?raw.coverIllustrationUrl:undefined,
   coverImageAlt:raw.coverImageAlt||"Редакционное изображение",coverImageCredit:raw.coverImageCredit||"SEOUL EDIT"};
 }
 type SanityImageInfo={
