@@ -11,7 +11,7 @@ const productQuery='*[_type=="videoProduct" && editorialStatus=="published" && d
 type SanityArticle=Partial<Article>&{slug?:string;coverImageUrl?:string;coverImageAlt?:string;coverImageCredit?:string;coverIllustrationUrl?:string;markdown?:string;priority?:"P1"|"P2"|"P3"};
 async function load<T>(query:string):Promise<T[]>{
  if(!cmsClient)return [];
- try{return await cmsClient.fetch<T[]>(query,{}, {cache:"no-store"});}
+ try{return await cmsClient.fetch<T[]>(query,{}, {next:{revalidate:10}});}
  catch(error){console.error("Sanity query unavailable",error instanceof Error?error.message:"unknown");return [];}
 }
 function normalizeArticle(raw:SanityArticle):Article|null{
