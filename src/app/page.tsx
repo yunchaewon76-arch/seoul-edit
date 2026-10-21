@@ -7,29 +7,36 @@ import {photoFor} from "@/data/visuals";
 
 export default async function Home(){
  const [sortedStories,videoStories]=await Promise.all([getAllArticles(),getAllCreatorVideos()]);
- const hero=sortedStories.find(s=>s.slug==="hwahae-2026-what-rankings-tell-us")||sortedStories[0];
+ const newEditorials=sortedStories.filter(s=>s.priority&&s.date>="2026-10-21").slice(0,6);
+ const hero=newEditorials[0]||sortedStories.find(s=>s.slug==="hwahae-2026-what-rankings-tell-us")||sortedStories[0];
  const spotlight=sortedStories.find(s=>s.slug==="seoul-fashion-week-2027-city-festival")||sortedStories[1]||hero;
- const picks=sortedStories.filter(s=>s.slug!==hero.slug&&s.slug!==spotlight.slug).slice(0,6);
+ const featuredSlugs=new Set(newEditorials.map(s=>s.slug));
+ const picks=sortedStories.filter(s=>s.slug!==hero.slug&&s.slug!==spotlight.slug&&!featuredSlugs.has(s.slug)).slice(0,6);
  return <div id="top"><div className="container">
   <div className="issue-line"><span><span className="issue-mark">✳</span> ISSUE 001 <span className="issue-separator">/</span> OCTOBER 2026</span><span>BEAUTY · FASHION · SEOUL SIGNAL</span><span className="issue-right">INDEPENDENT KOREA JOURNAL ↗</span></div>
   <section className="cover-story" aria-labelledby="cover-title">
    <Link href={"/article/"+hero.slug} className="cover-photo">
     {/* eslint-disable-next-line @next/next/no-img-element */}
     <img src={photoFor(hero).src} alt={photoFor(hero).alt} fetchPriority="high"/>
-    <span className="cover-photo-label">THE SIGNAL ISSUE <span>01 / 09</span></span>
+    <span className="cover-photo-label">NEW EDITORIAL <span>{hero.priority||"SEOUL EDIT"}</span></span>
     <span className="cover-watermark" aria-hidden="true">S<span>E</span>OUL</span>
    </Link>
    <div className="cover-copy">
     <div className="cover-kicker"><span className="dot"/> SEOUL SIGNAL / COVER STORY</div>
     <div><p className="cover-issue">NOT JUST TRENDS. THE CONTEXT.</p>
-     <h1 id="cover-title">Не просто<br/><em>тренды.</em><br/>Настоящая Корея.</h1>
-     <p className="cover-desc">Почему корейский бьюти-рейтинг не всегда означает «любимый продукт всей страны»? Разбираем источники, а не повторяем заголовки.</p>
+     <h1 id="cover-title">{hero.title}</h1>
+     <p className="cover-desc">{hero.excerpt}</p>
      <Link href={"/article/"+hero.slug} className="text-link">Читать разбор <span aria-hidden="true">↗</span></Link>
     </div>
     <div className="cover-bottom"><span>SEOUL EDIT / EDITORIAL NOTE</span><span>SOURCE-FIRST JOURNALISM</span></div>
    </div>
   </section>
   <div className="under-cover"><span>WHAT'S BEHIND THE TREND</span><p>Корейская красота и мода — с фактами, оригинальными источниками и вниманием к контексту.</p><span>READ WITH CURIOSITY ↓</span></div>
+  {newEditorials.length>0&&<section className="mag-section" aria-labelledby="new-editorials-heading">
+   <div className="section-heading"><div><span className="section-num">JUST PUBLISHED / P1 FIRST</span><h2 id="new-editorials-heading">Новые <em>публикации</em></h2></div><Link className="section-action" href="/signal">Все статьи <span>↗</span></Link></div>
+   <p className="se-home-video-deck">Свежие материалы SEOUL EDIT. Сначала важные проверенные темы, затем дополнительные редакционные находки.</p>
+   <div className="story-grid">{newEditorials.map(story=><ArticleCard key={story.slug} story={story}/>)}</div>
+  </section>}
   <section className="signature-intro" aria-label="Что такое SEOUL SIGNAL">
    <div className="signature-index"><span>01 / OUR SIGNATURE FORMAT</span><strong>✳</strong></div>
    <div><span className="eyebrow">INTRODUCING SEOUL SIGNAL</span><h2>Тренд — это только <em>начало истории.</em></h2><p>Мы ищем, где и как зародилась идея, проверяем данные и объясняем, что стоит за заголовком. Без выдуманных «хитов Кореи» и навязчивого шопинга.</p><Link href="/signal" className="text-link">Исследовать сигналы <span>↗</span></Link></div>
