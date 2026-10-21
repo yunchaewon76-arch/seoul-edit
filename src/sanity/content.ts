@@ -5,13 +5,13 @@ import {videoStories as seedVideos,type VideoStory,type VideoCategory,type Video
 import {confirmedVideoProducts,type EditorialProduct,safeRetailerLink} from "@/data/video-products";
 
 const articleQuery='*[_type=="editorialArticle" && editorialStatus=="published" && defined(slug.current)]|order(publishedAt desc){"slug":slug.current,title,excerpt,category,format,"date":publishedAt,tags,"body":bodyParagraphs,signal,context,caution,readingMinutes,"coverImageUrl":coverImage.asset->url,"coverImageAlt":coverImage.alt,"coverImageCredit":coverImage.credit,coverIllustrationUrl,priority,markdown,sources[]{title,url,kind}}';
-const videoQuery='*[_type=="creatorVideo" && defined(slug.current)]|order(publishedAt desc){"slug":slug.current,youtubeId,headline,originalTitle,creator,category,reviewStatus,publishedAt,deck,takeaways,"inlineImages":editorialImages[]{_key,"url":asset->url,alt,caption,credit,afterParagraph,rightsConfirmed},sourceNote,sourceUrl,linkedProducts}';
-const productQuery='*[_type=="videoProduct" && editorialStatus=="published" && defined(video->slug.current)]{"id":_id,"videoSlug":video->slug.current,brand,name,variant,originalOrAlternative,alternativeFor,whyComparable,russianRetailer,russianProductUrl,checkedAt,comparisonSourceUrl,verificationNote,"imageUrl":image.asset->url}';
+const videoQuery='*[_type=="creatorVideo" && editorialStatus=="published" && defined(slug.current)]|order(publishedAt desc){"slug":slug.current,youtubeId,headline,originalTitle,creator,category,reviewStatus,publishedAt,deck,takeaways,"inlineImages":editorialImages[]{_key,"url":asset->url,alt,caption,credit,afterParagraph,rightsConfirmed},sourceNote,sourceUrl,linkedProducts}';
+const productQuery='*[_type=="videoProduct" && editorialStatus=="published" && defined(video->slug.current)]{"id":_id,"videoSlug":video->slug.current,brand,name,variant,originalOrAlternative,alternativeFor,whyComparable,russianRetailer,russianProductUrl,checkedAt,comparisonSourceUrl,verificationNote,sourceId,"imageUrl":image.asset->url}';
 
 type SanityArticle=Partial<Article>&{slug?:string;coverImageUrl?:string;coverImageAlt?:string;coverImageCredit?:string;coverIllustrationUrl?:string;markdown?:string;priority?:"P1"|"P2"|"P3"};
 async function load<T>(query:string):Promise<T[]>{
  if(!cmsClient)return [];
- try{return await cmsClient.fetch<T[]>(query,{}, {next:{revalidate:60}});}
+ try{return await cmsClient.fetch<T[]>(query,{}, {next:{revalidate:10}});}
  catch(error){console.error("Sanity query unavailable",error instanceof Error?error.message:"unknown");return [];}
 }
 function normalizeArticle(raw:SanityArticle):Article|null{
@@ -88,9 +88,17 @@ export async function getAllCreatorVideos():Promise<VideoStory[]>{
  const used=new Set(cms.map(s=>s.slug));
  return [...cms,...seedVideos.filter(s=>!used.has(s.slug))];
 }
+function productIdentity(product:EditorialProduct):string{
+ return [product.videoSlug,product.brand,product.name,product.variant||""]
+  .map(value=>value.trim().toLocaleLowerCase()).join("|");
+}
 export async function getVerifiedProducts(videoSlug:string):Promise<EditorialProduct[]>{
  const raw=await load<EditorialProduct>(productQuery);
  const cms=raw.filter(p=>p.videoSlug===videoSlug&&p.id&&p.brand&&p.name&&p.verificationNote?.trim());
- const used=new Set(cms.map(p=>p.id));
- return [...cms,...confirmedVideoProducts.filter(p=>p.videoSlug===videoSlug&&!used.has(p.id)&&p.verificationNote?.trim())];
+ const usedIds=new Set(cms.flatMap(p=>[p.id,p.sourceId].filter((v):v is string=>Boolean(v))));
+ const usedProducts=new Set(cms.map(productIdentity));
+ return [...cms,...confirmedVideoProducts.filter(p=>
+  p.videoSlug===videoSlug && !usedIds.has(p.id) && !usedProducts.has(productIdentity(p)) &&
+  p.verificationNote?.trim()
+ )];
 }
