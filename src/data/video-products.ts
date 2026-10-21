@@ -2,7 +2,7 @@ import verifiedProductRecords from "./verified-video-products.json";
 /**
  * NO affiliate claims, prices or live stock without verification.
  * Evidence-based product list for specific reviewed videos is currently empty.
- * Add exact product-page links only after confirming the item in the original video.
+ * A link is displayed only when its exact listing and source have been recorded.
  */
 export type EditorialProduct = {
  id:string;
@@ -30,7 +30,7 @@ export function safeRetailerLink(product:EditorialProduct):string|null{
  if(!product.russianProductUrl || !product.checkedAt || !product.verificationNote.trim())return null;
  try{
   const url=new URL(product.russianProductUrl);
-  if(url.protocol!=="https:" || !["goldapple.ru","www.goldapple.ru","ozon.ru","www.ozon.ru","wildberries.ru","www.wildberries.ru","rivegauche.ru","www.rivegauche.ru"].includes(url.hostname))return null;
+  if(url.protocol!=="https:" || !["goldapple.ru","www.goldapple.ru","ozon.ru","www.ozon.ru","wildberries.ru","www.wildberries.ru","rivegauche.ru","www.rivegauche.ru","www.joom.ru","joom.ru","www.lunifera.ru","lunifera.ru","www.mac-cosmetics.ru","mac-cosmetics.ru","www.chanel.com","www.yesstyle.com"].includes(url.hostname))return null;
   if(url.pathname.length<5 || ["/search","/catalog","/brands"].includes(url.pathname))return null;
   const date=Date.parse(product.checkedAt+"T00:00:00Z");
   const age=(Date.now()-date)/86400000;
