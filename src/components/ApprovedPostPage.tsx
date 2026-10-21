@@ -74,19 +74,22 @@ const products:Record<string,{name:string;label:string;summary:string;url:string
 };
 export default function ApprovedPostPage({post}:{post:ApprovedPost}){
  const shopping=products[post.slug]||[];
+ const category=("category" in post && (post.category==="fashion"||post.category==="trends"))?post.category:"beauty";
+ const label=category==="fashion"?"МОДА":category==="trends"?"ТРЕНДЫ":"КРАСОТА";
+ const dateLabel=new Date(post.date+"T12:00:00Z").toLocaleDateString("ru-RU",{day:"numeric",month:"long",year:"numeric"}).toUpperCase();
  return <div className="container article-wrap">
-  <Link className="back" href={("category" in post && post.category==="fashion")?"/fashion":("category" in post && post.category==="trends")?"/trends":"/beauty"}>← Журнал</Link>
-  <div className="eyebrow">SEOUL EDIT / BEAUTY DECODED / ГИД ПО ПРОДУКТАМ</div>
-  <header className={styles.articleHeader}><h1>{post.title}</h1><p className="article-deck">{post.excerpt}</p><div className="article-byline">РЕДАКЦИЯ SEOUL EDIT · 18 ОКТЯБРЯ 2026 · РУССКАЯ РЕДАКЦИЯ</div></header>
-  <figure className={styles.hero}><img src={post.image} alt="Авторская иллюстрация SEOUL EDIT, не фотография продукта"/><figcaption>Иллюстрация SEOUL EDIT · самостоятельная схема, не реальные оттенки или упаковки товаров.</figcaption></figure>
-  <div className={styles.columns}><aside className={styles.rail}><span>SEOUL EDIT</span><strong>Проверили.<br/>Объяснили.<br/>Сравнили.</strong><a href="#shop">Средства и магазины ↓</a><a href={post.primarySource} target="_blank" rel="noopener noreferrer">Первоисточник ↗</a></aside>
+  <Link className="back" href={"/"+category}>← {label}</Link>
+  <div className="eyebrow">SEOUL EDIT / {label} / {shopping.length?"ГИД ПО ПРОДУКТАМ":"РЕДАКЦИОННЫЙ РАЗБОР"}</div>
+  <header className={styles.articleHeader}><h1>{post.title}</h1><p className="article-deck">{post.excerpt}</p><div className="article-byline">РЕДАКЦИЯ SEOUL EDIT · {dateLabel} · РУССКАЯ РЕДАКЦИЯ</div></header>
+  <figure className={styles.hero}><img src={post.image} alt="Авторская тематическая иллюстрация SEOUL EDIT"/><figcaption>Иллюстрация SEOUL EDIT. Не документальный снимок события или конкретного товара.</figcaption></figure>
+  <div className={styles.columns}><aside className={styles.rail}><span>SEOUL EDIT</span><strong>Проверили.<br/>Объяснили.<br/>Сравнили.</strong>{shopping.length>0&&<a href="#shop">Средства и магазины ↓</a>}<a href={post.primarySource} target="_blank" rel="noopener noreferrer">Первоисточник ↗</a></aside>
    <article className={styles.body}>{editorialBody(post.markdown,post.image)}
-    <section className={styles.productSection} id="shop"><span className="eyebrow">SHOP THE RESEARCH</span><h2>Продукты и ссылки для России</h2><p>Фотографии и точные варианты можно посмотреть на официальных страницах брендов и продавцов. Здесь — оригинальные продукты и отдельно помеченные альтернативы. Наличие в вашем городе не гарантируется.</p>
+    {shopping.length>0&&<section className={styles.productSection} id="shop"><span className="eyebrow">SHOP THE RESEARCH</span><h2>Продукты и ссылки для России</h2><p>Фотографии и точные варианты можно посмотреть на официальных страницах брендов и продавцов. Здесь — оригинальные продукты и отдельно помеченные альтернативы. Наличие в вашем городе не гарантируется.</p>
       <div className={styles.productGrid}>{shopping.map((p,i)=><a key={p.name} className={styles.productCard} href={p.url} target="_blank" rel="noopener noreferrer nofollow"><div className={styles.productVisual} aria-hidden="true"><span>{String(i+1).padStart(2,"0")}</span><strong>{p.name.split(" ")[0]}</strong><small>{p.category}</small></div><div className={styles.productInfo}><span className={styles.productStatus}>{p.label}</span><h3>{p.name}</h3><p>{p.summary}</p><span className={styles.merchant}>{p.merchant} ↗</span></div></a>)}</div>
       <p className={styles.note}>Сами фото магазинов здесь не воспроизводятся без разрешения. Представленные карточки — авторская типографическая графика, а не изображения упаковки.</p>
-    </section>
+    </section>}
    </article>
   </div>
-  <nav className={styles.bottomNav}><Link href="/beauty">← Все статьи о красоте</Link><Link href="/signal">Все материалы ↗</Link></nav>
+  <nav className={styles.bottomNav}><Link href={"/"+category}>← Все материалы: {label}</Link><Link href="/signal">Все материалы ↗</Link></nav>
  </div>;
 }
