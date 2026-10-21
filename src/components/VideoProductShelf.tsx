@@ -13,6 +13,7 @@ export default function VideoProductShelf({products,showReference=false}:{produc
      <span className="se-product-role">{p.originalOrAlternative==="alternative"?"АЛЬТЕРНАТИВА":"ПРОДУКТ ИЗ ВИДЕО"}</span>
      <h3>{p.brand}</h3><p>{p.name}{p.variant?" · "+p.variant:""}</p>
      {p.originalOrAlternative==="alternative"&&<div className="se-product-reason"><strong>Вместо: {p.alternativeFor}</strong><span>{p.whyComparable}</span></div>}
+     {p.verificationNote&&<small className="se-product-disclaimer">{p.verificationNote}</small>}
      {link?<a className="se-product-buy" target="_blank" rel="noopener noreferrer" href={link}>Смотреть в {p.russianRetailer||"магазине"} ↗</a>:
       <span className="se-product-unverified">Ссылка в России не подтверждена</span>}
      <small className="se-product-disclaimer">Проверено: {p.checkedAt||"не проверено"} · Цену и остатки уточняйте у продавца.</small>
