@@ -6,6 +6,7 @@ import verifiedProductRecords from "./verified-video-products.json";
  */
 export type EditorialProduct = {
  id:string;
+ sourceId?:string; // stable identifier of the GitHub seed for deduplication
  videoSlug:string; // Video where the product was confirmed by listening/watching the original
  brand:string;name:string;
  variant?:string;imageUrl?:string; // use imagery only when allowed
