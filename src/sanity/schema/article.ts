@@ -16,6 +16,10 @@ export const editorialArticle=defineType({
     defineField({name:"alt",type:"string",title:"대체 텍스트 / alt",validation:R=>R.required()}),
     defineField({name:"credit",type:"string",title:"촬영자·라이선스 출처"})
   ]}),
+  defineField({name:"priority",type:"string",title:"Редакционный приоритет / 중요도",options:{list:[{title:"P1 · 높은 중요도",value:"P1"},{title:"P2 · 보통",value:"P2"},{title:"P3 · 후순위",value:"P3"}]}}),
+  defineField({name:"markdown",type:"text",rows:18,title:"최종 원고 / Русский Markdown",description:"SEOUL EDIT 승인 기사: сайт показывает этот Markdown в первую очередь. Заголовки ##, ссылки и списки сохраняются."}),
+  defineField({name:"coverIllustrationUrl",type:"string",title:"기존 사이트 이미지 경로 (SVG)",description:"Например: /editorial/vintage-watch.svg. Использовать только лицензированное/собственное изображение."}),
+  defineField({name:"notionId",type:"string",title:"Notion 기록 ID",readOnly:true}),
   defineField({name:"bodyParagraphs",type:"array",title:"본문 문단 (러시아어)",of:[{type:"text",rows:6}],validation:R=>R.min(1).required()}),
   defineField({name:"signal",type:"text",rows:3,title:"확인된 사실 (SEOUL SIGNAL)",validation:R=>R.required()}),
   defineField({name:"context",type:"text",rows:3,title:"맥락·의미",validation:R=>R.required()}),
