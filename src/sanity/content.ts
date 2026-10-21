@@ -77,7 +77,8 @@ export async function getAllArticles():Promise<Article[]>{
  const raw=await load<SanityArticle>(articleQuery);
  const cms=raw.map(normalizeArticle).filter((s):s is Article=>s!==null);
  const used=new Set(cms.map(s=>s.slug));
- return [...cms,...seedArticles.filter(s=>!used.has(s.slug))].sort((a,b)=>b.date.localeCompare(a.date));
+ const rank=(s:Article)=>s.priority==="P1"?1:s.priority==="P2"?2:s.priority==="P3"?3:4;
+ return [...cms,...seedArticles.filter(s=>!used.has(s.slug))].sort((a,b)=>rank(a)-rank(b)||b.date.localeCompare(a.date));
 }
 export async function getAllCreatorVideos():Promise<VideoStory[]>{
  const raw=await load<SanityVideo>(videoQuery);
