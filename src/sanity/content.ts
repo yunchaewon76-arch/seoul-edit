@@ -92,5 +92,5 @@ export async function getVerifiedProducts(videoSlug:string):Promise<EditorialPro
  const raw=await load<EditorialProduct>(productQuery);
  const cms=raw.filter(p=>p.videoSlug===videoSlug&&p.id&&p.brand&&p.name&&p.verificationNote?.trim());
  const used=new Set(cms.map(p=>p.id));
- return [...cms,...confirmedVideoProducts.filter(p=>p.videoSlug===videoSlug&&!used.has(p.id)&&safeRetailerLink(p))];
+ return [...cms,...confirmedVideoProducts.filter(p=>p.videoSlug===videoSlug&&!used.has(p.id)&&p.verificationNote?.trim())];
 }
