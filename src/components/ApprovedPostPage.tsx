@@ -75,7 +75,7 @@ const products:Record<string,{name:string;label:string;summary:string;url:string
 export default function ApprovedPostPage({post}:{post:ApprovedPost}){
  const shopping=products[post.slug]||[];
  return <div className="container article-wrap">
-  <Link className="back" href="/beauty">← Красота</Link>
+  <Link className="back" href={("category" in post && post.category==="fashion")?"/fashion":("category" in post && post.category==="trends")?"/trends":"/beauty"}>← Журнал</Link>
   <div className="eyebrow">SEOUL EDIT / BEAUTY DECODED / ГИД ПО ПРОДУКТАМ</div>
   <header className={styles.articleHeader}><h1>{post.title}</h1><p className="article-deck">{post.excerpt}</p><div className="article-byline">РЕДАКЦИЯ SEOUL EDIT · 18 ОКТЯБРЯ 2026 · РУССКАЯ РЕДАКЦИЯ</div></header>
   <figure className={styles.hero}><img src={post.image} alt="Авторская иллюстрация SEOUL EDIT, не фотография продукта"/><figcaption>Иллюстрация SEOUL EDIT · самостоятельная схема, не реальные оттенки или упаковки товаров.</figcaption></figure>
