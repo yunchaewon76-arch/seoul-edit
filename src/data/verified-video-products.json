@@ -1,1 +1,199 @@
-[]
+[
+  {
+    "id": "taeng-mh-pad",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "MEDIHEAL",
+    "name": "Madecassoside Blemish Pad",
+    "originalOrAlternative": "original",
+    "russianRetailer": "Lunifera",
+    "russianProductUrl": "https://www.lunifera.ru/toner-diski-mediheal-madecassoside-blemish-pad.html",
+    "checkedAt": "2026-10-22",
+    "verificationNote": "10:44 — название в субтитрах. Карточка Lunifera найдена ранее; доступность страницы сегодня повторно не подтверждена."
+  },
+  {
+    "id": "taeng-mh-mask",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "MEDIHEAL",
+    "name": "Teatree Essential Mask",
+    "originalOrAlternative": "original",
+    "russianRetailer": "Joom",
+    "russianProductUrl": "https://www.joom.ru/ru/products/6a5105197d338701a0381624",
+    "checkedAt": "2026-10-22",
+    "verificationNote": "10:44 — название в субтитрах; сторонний продавец, подлинность не проверена."
+  },
+  {
+    "id": "taeng-lilybyred",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "lilybyred",
+    "name": "Luv Beam Sherbet Cheek",
+    "variant": "#08 Lavender Topping",
+    "originalOrAlternative": "original",
+    "russianRetailer": "Joom",
+    "russianProductUrl": "https://www.joom.ru/ru/products/6a22618efb861c01aaedb953",
+    "checkedAt": "2026-10-22",
+    "verificationNote": "05:23, 12:38 — продукт и цвет в субтитрах; проверьте выбранный вариант у продавца."
+  },
+  {
+    "id": "taeng-2an",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "2aN",
+    "name": "Dual Cheek",
+    "variant": "#02 Love, Rosy",
+    "originalOrAlternative": "original",
+    "verificationNote": "18:59 — Love, Rosy в субтитрах. Русская карточка Gold Apple «09 Love rosie» — другой оттенок, поэтому не прикреплена."
+  },
+  {
+    "id": "taeng-jsm",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "JUNG SAEM MOOL",
+    "name": "Essential Skin Nuder Cushion",
+    "variant": "Fair Light",
+    "originalOrAlternative": "original",
+    "russianRetailer": "Joom",
+    "russianProductUrl": "https://www.joom.ru/ru/products/690e0d8ec082bf010ea600ff",
+    "checkedAt": "2026-10-22",
+    "verificationNote": "17:37 — точный оттенок указан в видео; товарная карточка Joom проверена."
+  },
+  {
+    "id": "taeng-hourglass",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "Hourglass",
+    "name": "Vanish Airbrush Concealer",
+    "variant": "Cotton",
+    "originalOrAlternative": "original",
+    "verificationNote": "18:26, 24:27 — точные модель и цвет в субтитрах. Подтверждённой прямой российской карточки нет."
+  },
+  {
+    "id": "taeng-thesaem",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "the SAEM",
+    "name": "Cover Perfection Triple Pot Concealer",
+    "originalOrAlternative": "original",
+    "verificationNote": "18:26 — модель в субтитрах. Конкретная палитра не установлена; прежняя ссылка на Topcream выдаёт 404."
+  },
+  {
+    "id": "taeng-tirtir",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "TIRTIR",
+    "name": "Glide & Hide Blurring Concealer",
+    "originalOrAlternative": "original",
+    "verificationNote": "18:18 — TIRTIR слышно в беседе, название модели из внешнего списка; необходимо сверить упаковку."
+  },
+  {
+    "id": "taeng-hwahong",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "HWAHONG M",
+    "name": "Concealer Brush",
+    "variant": "№258",
+    "originalOrAlternative": "original",
+    "russianRetailer": "Joom",
+    "russianProductUrl": "https://www.joom.ru/ru/products/67b2c4d6d6579701d06373b8",
+    "checkedAt": "2026-10-22",
+    "verificationNote": "18:33–18:51 — номер кисти в субтитрах; магазин и подлинность не подтверждены."
+  },
+  {
+    "id": "taeng-etude",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "ETUDE",
+    "name": "Dr. Mascara Fixer",
+    "variant": "Brown",
+    "originalOrAlternative": "original",
+    "verificationNote": "14:16 — фиксатор показан, но бренд и оттенок уточнены по внешней подборке; нужна сверка кадра."
+  },
+  {
+    "id": "taeng-clio",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "CLIO",
+    "name": "Glass & Highlighter",
+    "variant": "#03 Peach Pearl",
+    "originalOrAlternative": "original",
+    "russianRetailer": "Золотом Яблоке",
+    "russianProductUrl": "https://goldapple.ru/19000491266-clio-glass-highlighter",
+    "checkedAt": "2026-10-22",
+    "verificationNote": "14:47 — CLIO в субтитрах, модель и цвет по внешнему списку; точная карточка Gold Apple проверена."
+  },
+  {
+    "id": "taeng-frottage",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "too cool for school",
+    "name": "Artclass Frottage Pencil",
+    "variant": "#09 Sheer Nude",
+    "originalOrAlternative": "original",
+    "russianRetailer": "Joom",
+    "russianProductUrl": "https://www.joom.ru/ru/products/648a8e90c0e10e019eddcca0",
+    "checkedAt": "2026-10-22",
+    "verificationNote": "15:42 — Sheer Nude в субтитрах, модель дополнительно сопоставлена; у Joom цвет выбирается отдельно."
+  },
+  {
+    "id": "taeng-smudging",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "too cool for school",
+    "name": "Smudging Under Liner",
+    "originalOrAlternative": "original",
+    "russianRetailer": "Joom",
+    "russianProductUrl": "https://www.joom.ru/ru/products/669505d18234b2019309a062",
+    "checkedAt": "2026-10-22",
+    "verificationNote": "16:06 — модель по внешнему списку; 3 оттенка не идентифицированы, карточка ранее найдена."
+  },
+  {
+    "id": "taeng-dejavu",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "dejavu",
+    "name": "Lasting Fine Cream Pencil",
+    "originalOrAlternative": "original",
+    "russianRetailer": "YesStyle",
+    "russianProductUrl": "https://www.yesstyle.com/ru/dejavu-%E6%8C%81%E4%B9%85%E7%B5%A2%E9%BA%97%E9%9C%9C%E7%8B%80%E6%9F%94%E6%BB%91%E7%9C%BC%E7%B7%9A%E7%AD%86/info.html/pid.1087917605",
+    "checkedAt": "2026-10-22",
+    "verificationNote": "20:57 — модель в субтитрах. Международный каталог, а не подтверждённый российский продавец."
+  },
+  {
+    "id": "taeng-club",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "CLUB",
+    "name": "Suppin Powder",
+    "originalOrAlternative": "original",
+    "verificationNote": "20:24 — продукт в субтитрах; версия и оттенок не указаны, российская карточка не подтверждена."
+  },
+  {
+    "id": "taeng-heart",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "Heart Percent",
+    "name": "Dote On Mood Lip Pencil",
+    "variant": "#06 Rose Beige",
+    "originalOrAlternative": "original",
+    "verificationNote": "21:46 — точное название и цвет в субтитрах, но прежняя торговая ссылка не открылась при повторной проверке."
+  },
+  {
+    "id": "taeng-chanel",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "CHANEL",
+    "name": "Le Rouge Duo Ultra Tenue",
+    "variant": "#186 Pink Nude",
+    "originalOrAlternative": "original",
+    "russianRetailer": "CHANEL (официальный каталог)",
+    "russianProductUrl": "https://www.chanel.com/ru/makeup/p/175186/le-rouge-duo-ultra-tenue-ultra-wear-liquid-lip-colour/",
+    "checkedAt": "2026-10-22",
+    "verificationNote": "22:28 — модель и оттенок в субтитрах; официальный каталог, доступность покупки не гарантирована."
+  },
+  {
+    "id": "taeng-fenty",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "Fenty Beauty",
+    "name": "Gloss Bomb Heat",
+    "variant": "Hot Cherry",
+    "originalOrAlternative": "original",
+    "verificationNote": "23:08 — точное название и цвет в субтитрах. Российская карточка не подтверждена."
+  },
+  {
+    "id": "taeng-mac",
+    "videoSlug": "taengkodok-ep03-taeyeon-eunchae",
+    "brand": "M·A·C",
+    "name": "Lustreglass Sheer-Shine Lipstick",
+    "variant": "$ellout",
+    "originalOrAlternative": "original",
+    "russianRetailer": "M·A·C (официальный каталог)",
+    "russianProductUrl": "https://www.mac-cosmetics.ru/product/13854/88565/-lustreglass-lipstick",
+    "checkedAt": "2026-10-22",
+    "verificationNote": "23:17 — серия и цвет в субтитрах; официальный российский каталог, цвет выбирается отдельно."
+  }
+]
