@@ -90,7 +90,7 @@ export async function getAllCreatorVideos():Promise<VideoStory[]>{
 }
 export async function getVerifiedProducts(videoSlug:string):Promise<EditorialProduct[]>{
  const raw=await load<EditorialProduct>(productQuery);
- const cms=raw.filter(p=>p.videoSlug===videoSlug&&p.id&&p.brand&&p.name&&p.verificationNote?.trim()&&safeRetailerLink(p));
+ const cms=raw.filter(p=>p.videoSlug===videoSlug&&p.id&&p.brand&&p.name&&p.verificationNote?.trim());
  const used=new Set(cms.map(p=>p.id));
  return [...cms,...confirmedVideoProducts.filter(p=>p.videoSlug===videoSlug&&!used.has(p.id)&&safeRetailerLink(p))];
 }
