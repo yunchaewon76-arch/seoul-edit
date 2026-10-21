@@ -4,6 +4,7 @@ import {defineConfig} from "sanity";
 import {structureTool} from "sanity/structure";
 import {schemaTypes} from "./src/sanity/schema";
 import LegacyVideoImporter from "./src/sanity/LegacyVideoImporter";
+import LegacyProductImporter from "./src/sanity/LegacyProductImporter";
 import PublishedArticlesImporter from "./src/sanity/PublishedArticlesImporter";
 
 export default defineConfig({
@@ -20,6 +21,9 @@ export default defineConfig({
    S.divider(),
    S.listItem().id("published-article-import").title("📥 발행 기사 5개 Sanity 가져오기").child(
     S.component(PublishedArticlesImporter).id("approved-article-import-pane").title("기존 발행 기사 Sanity 등록")
+   ),
+   S.listItem().id("video-product-import").title("📥 영상 제품 19개 Sanity 가져오기").child(
+    S.component(LegacyProductImporter).id("legacy-product-import-pane").title("기존 제품 조사 자료를 초안으로 복사")
    ),
    S.listItem().title("📰 일반 기사 / Articles").child(S.documentTypeList("editorialArticle").title("Articles")),
    S.listItem().title("🎬 CREATOR WATCH / Videos").child(S.documentTypeList("creatorVideo").title("Creator Videos")),
