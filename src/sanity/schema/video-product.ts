@@ -3,6 +3,7 @@ export const videoProduct=defineType({
  name:"videoProduct",title:"🧴 영상 속 제품·대체품",type:"document",
  fields:[
   defineField({name:"video",title:"출처 영상",type:"reference",to:[{type:"creatorVideo"}],validation:R=>R.required()}),
+  defineField({name:"sourceId",title:"기존 GitHub 상품 ID (중복 방지)",type:"string",readOnly:true}),
   defineField({name:"brand",title:"브랜드",type:"string",validation:R=>R.required()}),
   defineField({name:"name",title:"정확한 제품명",type:"string",validation:R=>R.required()}),
   defineField({name:"variant",title:"용량/색상/옵션",type:"string"}),
