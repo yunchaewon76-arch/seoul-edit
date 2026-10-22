@@ -17,7 +17,15 @@ export default async function ArticlePage({params}:{params:Promise<{slug:string}
  const story=sortedStories.find(s=>s.slug===slug);
  const approvedPost=approvedPosts.find(post=>post.slug===slug);
  if(approvedPost){
-  const effectivePost=story?.markdown?{...approvedPost,title:story.title,excerpt:story.excerpt,markdown:story.markdown,image:story.coverImageUrl||approvedPost.image,date:story.date,category:story.category}:approvedPost;
+  const effectivePost=story?{
+   ...approvedPost,
+   ...(story.markdown?{title:story.title,excerpt:story.excerpt,markdown:story.markdown,date:story.date,category:story.category}:{}),
+   image:story.coverImageUrl||approvedPost.image,
+   imageAlt:story.coverImageUrl?.startsWith("https://")?story.coverImageAlt:undefined,
+   imageCredit:story.coverImageUrl?.startsWith("https://")?story.coverImageCredit:undefined,
+   imageSourceUrl:story.coverImageUrl?.startsWith("https://")?story.coverImageSourceUrl:undefined,
+   inlineIllustration:approvedPost.image
+  }:approvedPost;
   return <ApprovedPostPage post={effectivePost}/>;
  }
  if(!story)notFound();
@@ -31,7 +39,7 @@ export default async function ArticlePage({params}:{params:Promise<{slug:string}
   <figure className="article-photo">
    {/* eslint-disable-next-line @next/next/no-img-element */}
    <img src={photo.src} alt={photo.alt}/>
-   <figcaption>Фото: {photo.credit}. Изображение не подтверждает события, упомянутые в статье.</figcaption>
+   <figcaption>Изображение: {photo.sourceUrl?<a href={photo.sourceUrl} target="_blank" rel="noopener noreferrer">{photo.credit} ↗</a>:photo.credit}. {photo.src.includes("unsplash.com")?"Иллюстративное фото, не документальный снимок события.":""}</figcaption>
   </figure>
   <div className="signal-article-grid">
    <aside className="signal-rail"><span>SEOUL SIGNAL</span><strong>Факты.<br/>Контекст.<br/>Без шума.</strong><Link href="/signal">Все сигналы ↗</Link></aside>
