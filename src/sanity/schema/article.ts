@@ -14,7 +14,9 @@ export const editorialArticle=defineType({
   defineField({name:"excerpt",type:"text",rows:3,title:"요약",validation:R=>R.required().min(40)}),
   defineField({name:"coverImage",type:"image",title:"기사 커버 이미지 · 저작권 확인 필수",options:{hotspot:true},fields:[
     defineField({name:"alt",type:"string",title:"대체 텍스트 / alt",validation:R=>R.required()}),
-    defineField({name:"credit",type:"string",title:"촬영자·라이선스 출처"})
+    defineField({name:"credit",type:"string",title:"촬영자·권리자 이름"}),
+    defineField({name:"sourceUrl",type:"url",title:"이미지 원본·라이선스 링크",validation:R=>R.uri({scheme:["https"]})}),
+    defineField({name:"rightsConfirmed",type:"boolean",title:"사진 재게시 및 편집 사용 권한 확인",initialValue:false,description:"출처 표기만으로 사용 허가가 생기지 않습니다. 웹사이트·표지 편집/크롭/문구 오버레이 허용 여부를 확인한 경우에만 켭니다."})
   ]}),
   defineField({name:"priority",type:"string",title:"Редакционный приоритет / 중요도",options:{list:[{title:"P1 · 높은 중요도",value:"P1"},{title:"P2 · 보통",value:"P2"},{title:"P3 · 후순위",value:"P3"}]}}),
   defineField({name:"markdown",type:"text",rows:18,title:"최종 원고 / Русский Markdown",description:"SEOUL EDIT 승인 기사: сайт показывает этот Markdown в первую очередь. Заголовки ##, ссылки и списки сохраняются."}),
