@@ -9,7 +9,10 @@ export type EditorialProduct = {
  sourceId?:string; // stable identifier of the GitHub seed for deduplication
  videoSlug:string; // Video where the product was confirmed by listening/watching the original
  brand:string;name:string;
- variant?:string;imageUrl?:string; // use imagery only when allowed
+ variant?:string;imageUrl?:string; // Sanity uploaded photo; rights gate enforced below
+ imageRightsConfirmed?:boolean;imageUsageBasis?:string;imageCredit?:string;imageAlt?:string;
+ editorialImageUrl?:string;editorialImagePath?:string;editorialImageAlt?:string;
+ productCategory?:"skincare"|"cheek"|"complexion"|"eyes"|"lips"|"tools";
  originalOrAlternative:"original"|"alternative";
  alternativeFor?:string;
  whyComparable?:string;
