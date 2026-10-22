@@ -4,6 +4,7 @@ import {defineConfig} from "sanity";
 import {structureTool} from "sanity/structure";
 import {schemaTypes} from "./src/sanity/schema";
 import LegacyVideoImporter from "./src/sanity/LegacyVideoImporter";
+import StylistTrendsPublisher from "./src/sanity/StylistTrendsPublisher";
 import LegacyProductImporter from "./src/sanity/LegacyProductImporter";
 import PublishedArticlesImporter from "./src/sanity/PublishedArticlesImporter";
 
@@ -26,6 +27,9 @@ export default defineConfig({
     S.component(LegacyProductImporter).id("legacy-product-import-pane").title("기존 제품 조사 자료를 초안으로 복사")
    ),
    S.listItem().title("📰 일반 기사 / Articles").child(S.documentTypeList("editorialArticle").title("Articles")),
+   S.listItem().id("stylist-fw-2026-sync").title("🔄 Stylist Unnie 2026 FW 원고 반영").child(
+    S.component(StylistTrendsPublisher).id("stylist-fw-2026-editorial-sync").title("러시아어 기사 Sanity 반영")
+   ),
    S.listItem().title("🎬 CREATOR WATCH / Videos").child(S.documentTypeList("creatorVideo").title("Creator Videos")),
    S.listItem().title("🧴 제품·대체품 / Products").child(S.documentTypeList("videoProduct").title("Video Products"))
   ])
