@@ -1,15 +1,18 @@
 import {type EditorialProduct,safeRetailerLink,screenshotReferenceProducts} from "@/data/video-products";
+import {getProductImage} from "@/data/product-image";
 export default function VideoProductShelf({products,showReference=false}:{products:EditorialProduct[];showReference?:boolean}){
  return <section className="se-products" aria-labelledby="se-products-heading">
   <div className="se-product-head"><div><span className="eyebrow">THE PRODUCT NOTES</span><h2 id="se-products-heading">Что использовали в видео?</h2></div><p>Оригинал и российская альтернатива — только после сверки состава, назначения и ссылки.</p></div>
   {products.length>0?<div className="se-product-grid">
    {products.map((p,i)=>{
     const link=safeRetailerLink(p);
+    const visual=getProductImage(p);
     return <article className="se-product-card" key={p.id}>
-     <div className={"se-product-art se-product-art-"+(i%2===0?"blue":"cream")}>
-      {p.imageUrl?/* eslint-disable-next-line @next/next/no-img-element */<img src={p.imageUrl} alt={p.brand+" "+p.name} loading="lazy"/>:
-       <span>{p.brand}<small>PRODUCT NOTE</small></span>}
-     </div>
+     <figure className="se-product-art se-product-art--image">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={visual.src} alt={visual.alt} width={720} height={720} loading="lazy" decoding="async"/>
+      <figcaption className={"se-product-art-credit"+(visual.kind==="fallback"?" se-product-art-credit--pending":"")}>{visual.credit}</figcaption>
+     </figure>
      <span className="se-product-role">{p.originalOrAlternative==="alternative"?"АЛЬТЕРНАТИВА":"ПРОДУКТ ИЗ ВИДЕО"}</span>
      <h3>{p.brand}</h3><p>{p.name}{p.variant?" · "+p.variant:""}</p>
      {p.originalOrAlternative==="alternative"&&<div className="se-product-reason"><strong>Вместо: {p.alternativeFor}</strong><span>{p.whyComparable}</span></div>}

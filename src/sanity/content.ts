@@ -6,7 +6,7 @@ import {confirmedVideoProducts,type EditorialProduct,safeRetailerLink} from "@/d
 
 const articleQuery='*[_type=="editorialArticle" && editorialStatus=="published" && defined(slug.current)]|order(publishedAt desc){"slug":slug.current,title,excerpt,category,format,"date":publishedAt,tags,"body":bodyParagraphs,signal,context,caution,readingMinutes,"coverImageUrl":coverImage.asset->url,"coverImageAlt":coverImage.alt,"coverImageCredit":coverImage.credit,coverIllustrationUrl,priority,markdown,sources[]{title,url,kind}}';
 const videoQuery='*[_type=="creatorVideo" && editorialStatus=="published" && defined(slug.current)]|order(publishedAt desc){"slug":slug.current,youtubeId,headline,originalTitle,creator,category,reviewStatus,publishedAt,deck,takeaways,"inlineImages":editorialImages[]{_key,"url":asset->url,alt,caption,credit,afterParagraph,rightsConfirmed},sourceNote,sourceUrl,linkedProducts}';
-const productQuery='*[_type=="videoProduct" && editorialStatus=="published" && defined(video->slug.current)]{"id":_id,"videoSlug":video->slug.current,brand,name,variant,originalOrAlternative,alternativeFor,whyComparable,russianRetailer,russianProductUrl,checkedAt,comparisonSourceUrl,verificationNote,sourceId,"imageUrl":image.asset->url}';
+const productQuery='*[_type=="videoProduct" && editorialStatus=="published" && defined(video->slug.current)]{"id":_id,"videoSlug":video->slug.current,brand,name,variant,originalOrAlternative,alternativeFor,whyComparable,russianRetailer,russianProductUrl,checkedAt,comparisonSourceUrl,verificationNote,sourceId,productCategory,imageRightsConfirmed,imageUsageBasis,imageCredit,imageAlt,editorialImagePath,editorialImageAlt,"imageUrl":image.asset->url,"editorialImageUrl":editorialImage.asset->url}';
 
 type SanityArticle=Partial<Article>&{slug?:string;coverImageUrl?:string;coverImageAlt?:string;coverImageCredit?:string;coverIllustrationUrl?:string;markdown?:string;priority?:"P1"|"P2"|"P3"};
 async function load<T>(query:string):Promise<T[]>{
@@ -94,7 +94,17 @@ function productIdentity(product:EditorialProduct):string{
 }
 export async function getVerifiedProducts(videoSlug:string):Promise<EditorialProduct[]>{
  const raw=await load<EditorialProduct>(productQuery);
- const cms=raw.filter(p=>p.videoSlug===videoSlug&&p.id&&p.brand&&p.name&&p.verificationNote?.trim());
+ const seeds=confirmedVideoProducts.filter(p=>p.videoSlug===videoSlug);
+ const seedById=new Map(seeds.map(p=>[p.id,p]));
+ const seedByIdentity=new Map(seeds.map(p=>[productIdentity(p),p]));
+ // Published Sanity records are canonical for names, text, and shop links.
+ // Matching seed products supply only missing original artwork metadata.
+ const cms=raw.filter(p=>p.videoSlug===videoSlug&&p.id&&p.brand&&p.name&&p.verificationNote?.trim())
+  .map(p=>{
+   const seed=(p.sourceId&&seedById.get(p.sourceId))||seedById.get(p.id)||seedByIdentity.get(productIdentity(p));
+   return seed?{...p,editorialImagePath:p.editorialImagePath||seed.editorialImagePath,
+    editorialImageAlt:p.editorialImageAlt||seed.editorialImageAlt}:p;
+  });
  const usedIds=new Set(cms.flatMap(p=>[p.id,p.sourceId].filter((v):v is string=>Boolean(v))));
  const usedProducts=new Set(cms.map(productIdentity));
  return [...cms,...confirmedVideoProducts.filter(p=>
