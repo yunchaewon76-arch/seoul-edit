@@ -8,7 +8,9 @@
     "russianRetailer": "Lunifera",
     "russianProductUrl": "https://www.lunifera.ru/toner-diski-mediheal-madecassoside-blemish-pad.html",
     "checkedAt": "2026-10-22",
-    "verificationNote": "10:44 — название в субтитрах. Карточка Lunifera найдена ранее; доступность страницы сегодня повторно не подтверждена."
+    "verificationNote": "10:44 — название в субтитрах. Карточка Lunifera найдена ранее; доступность страницы сегодня повторно не подтверждена.",
+    "editorialImagePath": "/products/editorial/taeng-mh-pad.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: MEDIHEAL Madecassoside Blemish Pad"
   },
   {
     "id": "taeng-mh-mask",
@@ -19,7 +21,9 @@
     "russianRetailer": "Joom",
     "russianProductUrl": "https://www.joom.ru/ru/products/6a5105197d338701a0381624",
     "checkedAt": "2026-10-22",
-    "verificationNote": "10:44 — название в субтитрах; сторонний продавец, подлинность не проверена."
+    "verificationNote": "10:44 — название в субтитрах; сторонний продавец, подлинность не проверена.",
+    "editorialImagePath": "/products/editorial/taeng-mh-mask.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: MEDIHEAL Teatree Essential Mask"
   },
   {
     "id": "taeng-lilybyred",
@@ -31,7 +35,9 @@
     "russianRetailer": "Joom",
     "russianProductUrl": "https://www.joom.ru/ru/products/6a22618efb861c01aaedb953",
     "checkedAt": "2026-10-22",
-    "verificationNote": "05:23, 12:38 — продукт и цвет в субтитрах; проверьте выбранный вариант у продавца."
+    "verificationNote": "05:23, 12:38 — продукт и цвет в субтитрах; проверьте выбранный вариант у продавца.",
+    "editorialImagePath": "/products/editorial/taeng-lilybyred.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: lilybyred Luv Beam Sherbet Cheek #08 Lavender Topping"
   },
   {
     "id": "taeng-2an",
@@ -40,7 +46,9 @@
     "name": "Dual Cheek",
     "variant": "#02 Love, Rosy",
     "originalOrAlternative": "original",
-    "verificationNote": "18:59 — Love, Rosy в субтитрах. Русская карточка Gold Apple «09 Love rosie» — другой оттенок, поэтому не прикреплена."
+    "verificationNote": "18:59 — Love, Rosy в субтитрах. Русская карточка Gold Apple «09 Love rosie» — другой оттенок, поэтому не прикреплена.",
+    "editorialImagePath": "/products/editorial/taeng-2an.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: 2aN Dual Cheek #02 Love, Rosy"
   },
   {
     "id": "taeng-jsm",
@@ -52,7 +60,9 @@
     "russianRetailer": "Joom",
     "russianProductUrl": "https://www.joom.ru/ru/products/690e0d8ec082bf010ea600ff",
     "checkedAt": "2026-10-22",
-    "verificationNote": "17:37 — точный оттенок указан в видео; товарная карточка Joom проверена."
+    "verificationNote": "17:37 — точный оттенок указан в видео; товарная карточка Joom проверена.",
+    "editorialImagePath": "/products/editorial/taeng-jsm.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: JUNG SAEM MOOL Essential Skin Nuder Cushion Fair Light"
   },
   {
     "id": "taeng-hourglass",
@@ -61,7 +71,9 @@
     "name": "Vanish Airbrush Concealer",
     "variant": "Cotton",
     "originalOrAlternative": "original",
-    "verificationNote": "18:26, 24:27 — точные модель и цвет в субтитрах. Подтверждённой прямой российской карточки нет."
+    "verificationNote": "18:26, 24:27 — точные модель и цвет в субтитрах. Подтверждённой прямой российской карточки нет.",
+    "editorialImagePath": "/products/editorial/taeng-hourglass.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: Hourglass Vanish Airbrush Concealer Cotton"
   },
   {
     "id": "taeng-thesaem",
@@ -69,7 +81,9 @@
     "brand": "the SAEM",
     "name": "Cover Perfection Triple Pot Concealer",
     "originalOrAlternative": "original",
-    "verificationNote": "18:26 — модель в субтитрах. Конкретная палитра не установлена; прежняя ссылка на Topcream выдаёт 404."
+    "verificationNote": "18:26 — модель в субтитрах. Конкретная палитра не установлена; прежняя ссылка на Topcream выдаёт 404.",
+    "editorialImagePath": "/products/editorial/taeng-thesaem.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: the SAEM Cover Perfection Triple Pot Concealer"
   },
   {
     "id": "taeng-tirtir",
@@ -77,7 +91,9 @@
     "brand": "TIRTIR",
     "name": "Glide & Hide Blurring Concealer",
     "originalOrAlternative": "original",
-    "verificationNote": "18:18 — TIRTIR слышно в беседе, название модели из внешнего списка; необходимо сверить упаковку."
+    "verificationNote": "18:18 — TIRTIR слышно в беседе, название модели из внешнего списка; необходимо сверить упаковку.",
+    "editorialImagePath": "/products/editorial/taeng-tirtir.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: TIRTIR Glide & Hide Blurring Concealer"
   },
   {
     "id": "taeng-hwahong",
@@ -89,7 +105,9 @@
     "russianRetailer": "Joom",
     "russianProductUrl": "https://www.joom.ru/ru/products/67b2c4d6d6579701d06373b8",
     "checkedAt": "2026-10-22",
-    "verificationNote": "18:33–18:51 — номер кисти в субтитрах; магазин и подлинность не подтверждены."
+    "verificationNote": "18:33–18:51 — номер кисти в субтитрах; магазин и подлинность не подтверждены.",
+    "editorialImagePath": "/products/editorial/taeng-hwahong.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: HWAHONG M Concealer Brush №258"
   },
   {
     "id": "taeng-etude",
@@ -98,7 +116,9 @@
     "name": "Dr. Mascara Fixer",
     "variant": "Brown",
     "originalOrAlternative": "original",
-    "verificationNote": "14:16 — фиксатор показан, но бренд и оттенок уточнены по внешней подборке; нужна сверка кадра."
+    "verificationNote": "14:16 — фиксатор показан, но бренд и оттенок уточнены по внешней подборке; нужна сверка кадра.",
+    "editorialImagePath": "/products/editorial/taeng-etude.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: ETUDE Dr. Mascara Fixer Brown"
   },
   {
     "id": "taeng-clio",
@@ -110,7 +130,9 @@
     "russianRetailer": "Золотом Яблоке",
     "russianProductUrl": "https://goldapple.ru/19000491266-clio-glass-highlighter",
     "checkedAt": "2026-10-22",
-    "verificationNote": "14:47 — CLIO в субтитрах, модель и цвет по внешнему списку; точная карточка Gold Apple проверена."
+    "verificationNote": "14:47 — CLIO в субтитрах, модель и цвет по внешнему списку; точная карточка Gold Apple проверена.",
+    "editorialImagePath": "/products/editorial/taeng-clio.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: CLIO Glass & Highlighter #03 Peach Pearl"
   },
   {
     "id": "taeng-frottage",
@@ -122,7 +144,9 @@
     "russianRetailer": "Joom",
     "russianProductUrl": "https://www.joom.ru/ru/products/648a8e90c0e10e019eddcca0",
     "checkedAt": "2026-10-22",
-    "verificationNote": "15:42 — Sheer Nude в субтитрах, модель дополнительно сопоставлена; у Joom цвет выбирается отдельно."
+    "verificationNote": "15:42 — Sheer Nude в субтитрах, модель дополнительно сопоставлена; у Joom цвет выбирается отдельно.",
+    "editorialImagePath": "/products/editorial/taeng-frottage.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: too cool for school Artclass Frottage Pencil #09 Sheer Nude"
   },
   {
     "id": "taeng-smudging",
@@ -133,7 +157,9 @@
     "russianRetailer": "Joom",
     "russianProductUrl": "https://www.joom.ru/ru/products/669505d18234b2019309a062",
     "checkedAt": "2026-10-22",
-    "verificationNote": "16:06 — модель по внешнему списку; 3 оттенка не идентифицированы, карточка ранее найдена."
+    "verificationNote": "16:06 — модель по внешнему списку; 3 оттенка не идентифицированы, карточка ранее найдена.",
+    "editorialImagePath": "/products/editorial/taeng-smudging.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: too cool for school Smudging Under Liner"
   },
   {
     "id": "taeng-dejavu",
@@ -144,7 +170,9 @@
     "russianRetailer": "YesStyle",
     "russianProductUrl": "https://www.yesstyle.com/ru/dejavu-%E6%8C%81%E4%B9%85%E7%B5%A2%E9%BA%97%E9%9C%9C%E7%8B%80%E6%9F%94%E6%BB%91%E7%9C%BC%E7%B7%9A%E7%AD%86/info.html/pid.1087917605",
     "checkedAt": "2026-10-22",
-    "verificationNote": "20:57 — модель в субтитрах. Международный каталог, а не подтверждённый российский продавец."
+    "verificationNote": "20:57 — модель в субтитрах. Международный каталог, а не подтверждённый российский продавец.",
+    "editorialImagePath": "/products/editorial/taeng-dejavu.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: dejavu Lasting Fine Cream Pencil"
   },
   {
     "id": "taeng-club",
@@ -152,7 +180,9 @@
     "brand": "CLUB",
     "name": "Suppin Powder",
     "originalOrAlternative": "original",
-    "verificationNote": "20:24 — продукт в субтитрах; версия и оттенок не указаны, российская карточка не подтверждена."
+    "verificationNote": "20:24 — продукт в субтитрах; версия и оттенок не указаны, российская карточка не подтверждена.",
+    "editorialImagePath": "/products/editorial/taeng-club.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: CLUB Suppin Powder"
   },
   {
     "id": "taeng-heart",
@@ -161,7 +191,9 @@
     "name": "Dote On Mood Lip Pencil",
     "variant": "#06 Rose Beige",
     "originalOrAlternative": "original",
-    "verificationNote": "21:46 — точное название и цвет в субтитрах, но прежняя торговая ссылка не открылась при повторной проверке."
+    "verificationNote": "21:46 — точное название и цвет в субтитрах, но прежняя торговая ссылка не открылась при повторной проверке.",
+    "editorialImagePath": "/products/editorial/taeng-heart.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: Heart Percent Dote On Mood Lip Pencil #06 Rose Beige"
   },
   {
     "id": "taeng-chanel",
@@ -173,7 +205,9 @@
     "russianRetailer": "CHANEL (официальный каталог)",
     "russianProductUrl": "https://www.chanel.com/ru/makeup/p/175186/le-rouge-duo-ultra-tenue-ultra-wear-liquid-lip-colour/",
     "checkedAt": "2026-10-22",
-    "verificationNote": "22:28 — модель и оттенок в субтитрах; официальный каталог, доступность покупки не гарантирована."
+    "verificationNote": "22:28 — модель и оттенок в субтитрах; официальный каталог, доступность покупки не гарантирована.",
+    "editorialImagePath": "/products/editorial/taeng-chanel.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: CHANEL Le Rouge Duo Ultra Tenue #186 Pink Nude"
   },
   {
     "id": "taeng-fenty",
@@ -182,7 +216,9 @@
     "name": "Gloss Bomb Heat",
     "variant": "Hot Cherry",
     "originalOrAlternative": "original",
-    "verificationNote": "23:08 — точное название и цвет в субтитрах. Российская карточка не подтверждена."
+    "verificationNote": "23:08 — точное название и цвет в субтитрах. Российская карточка не подтверждена.",
+    "editorialImagePath": "/products/editorial/taeng-fenty.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: Fenty Beauty Gloss Bomb Heat Hot Cherry"
   },
   {
     "id": "taeng-mac",
@@ -194,6 +230,8 @@
     "russianRetailer": "M·A·C (официальный каталог)",
     "russianProductUrl": "https://www.mac-cosmetics.ru/product/13854/88565/-lustreglass-lipstick",
     "checkedAt": "2026-10-22",
-    "verificationNote": "23:17 — серия и цвет в субтитрах; официальный российский каталог, цвет выбирается отдельно."
+    "verificationNote": "23:17 — серия и цвет в субтитрах; официальный российский каталог, цвет выбирается отдельно.",
+    "editorialImagePath": "/products/editorial/taeng-mac.svg",
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: M·A·C Lustreglass Sheer-Shine Lipstick $ellout"
   }
 ]
