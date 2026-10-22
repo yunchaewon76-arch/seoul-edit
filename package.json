@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "prebuild": "node scripts/generate-product-artwork.mjs",
-    "predev": "node scripts/generate-product-artwork.mjs"
+    "prebuild": "node scripts/generate-product-artwork.mjs && node scripts/check-product-artwork.mjs",
+    "predev": "node scripts/generate-product-artwork.mjs",
+    "verify:product-images": "node scripts/generate-product-artwork.mjs && node scripts/check-product-artwork.mjs"
   },
   "dependencies": {
     "next": "^16.0.0",
