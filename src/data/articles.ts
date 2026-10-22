@@ -4,7 +4,7 @@ export type Format = "brief" | "editorial";
 export type EditorialSource = {title:string;url:string;kind:"КОРЕЙСКИЙ ИСТОЧНИК"|"ИССЛЕДОВАНИЕ"|"МЕДИЦИНСКИЙ ИСТОЧНИК"|"ОБЗОР"|"ОФИЦИАЛЬНЫЙ ИСТОЧНИК"};
 export type Article = {
  slug:string;title:string;excerpt:string;category:Category;format:Format;date:string;
- cover:string;priority?:"P1"|"P2"|"P3";markdown?:string;coverImageUrl?:string;coverImageAlt?:string;coverImageCredit?:string;tags:string[];body:string[];signal:string;context:string;caution:string;
+ cover:string;priority?:"P1"|"P2"|"P3";markdown?:string;coverImageUrl?:string;coverImageAlt?:string;coverImageCredit?:string;coverImageSourceUrl?:string;coverImageRightsConfirmed?:boolean;tags:string[];body:string[];signal:string;context:string;caution:string;
  sources:EditorialSource[];readingMinutes:number;
 };
 export const stories:Article[]=[
