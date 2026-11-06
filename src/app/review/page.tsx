@@ -1,0 +1,44 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import part1 from "@/data/approved-review-20261106-1.json";
+import part2 from "@/data/approved-review-20261106-2.json";
+import part3 from "@/data/approved-review-20261106-3.json";
+import part4 from "@/data/approved-review-20261106-4.json";
+import styles from "./index.module.css";
+
+const approved = [...part1,...part2,...part3,...part4];
+
+export const dynamic = "force-dynamic";
+export const metadata: Metadata = {
+ title: "SEOUL EDIT · 26 статей на редакционной проверке",
+ description: "Закрытая редакционная проверка, без публикации",
+ robots: { index: false, follow: false, nocache: true }
+};
+
+export default function EditorialReviewIndex(){
+ if(process.env.VERCEL_ENV==="production") notFound();
+ return <main className={styles.root}>
+   <header className={styles.header}>
+    <Link href="/">SEOUL EDIT</Link>
+    <span>EDITORIAL DESK / PRIVATE REVIEW</span>
+   </header>
+   <section className={styles.intro}>
+    <p className={styles.eyebrow}>CONTENT PIPELINE · APPROVED IDEAS · 06 NOV 2026</p>
+    <h1>26 статей <em>на проверке</em></h1>
+    <p>Полные русскоязычные редакционные версии, перенесённые из существующих страниц Notion. Это предпросмотр, а не опубликованные статьи. Оформление обложек, финальная корректура, цены и наличие товаров требуют проверки перед выпуском.</p>
+    <div className={styles.counter}>26 / 26 · Черновики · Не опубликовано</div>
+   </section>
+   <div className={styles.list}>
+    {approved.map((a,i)=><article className={styles.item} key={a.slug}>
+      <div className={styles.number}>{String(i+1).padStart(2,"0")}</div>
+      <div className={styles.detail}>
+        <p className={styles.tags}><span>{a.priority}</span> <span>{a.cat}</span> <span>V3</span></p>
+        <h2><Link href={"/review/"+a.slug}>{a.title}</Link></h2>
+        <div className={styles.links}><Link href={"/review/"+a.slug}>Открыть предпросмотр ↗</Link><a href={a.notionUrl} target="_blank" rel="noopener noreferrer">Исходник в Notion ↗</a></div>
+      </div>
+    </article>)}
+   </div>
+   <footer className={styles.footer}>SEOUL EDIT · Каждый материал требует отдельного редакторского разрешения на публикацию.</footer>
+ </main>
+}
