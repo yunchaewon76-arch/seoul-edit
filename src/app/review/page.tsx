@@ -6,6 +6,7 @@ import part2 from "@/data/approved-review-20261106-2.json";
 import part3 from "@/data/approved-review-20261106-3.json";
 import part4 from "@/data/approved-review-20261106-4.json";
 import styles from "./index.module.css";
+import ReviewSummary from "@/components/ReviewSummary";
 import { expiredSet } from "@/data/editorial-review-publishing";
 
 const approved = [...part1,...part2,...part3,...part4].filter(a=>!expiredSet.has(a.slug));
@@ -30,6 +31,7 @@ export default function EditorialReviewIndex(){
     <p>Полезные гиды по корейской красоте, стилю и городской жизни. Завершившиеся мероприятия скрыты, внутренняя проверочная переписка удалена из читательского просмотра. Проверяйте товары, обложки и читаемость на компьютере и телефоне.</p>
     <div className={styles.counter}>21 / 21 · Черновики · Не опубликовано</div>
    </section>
+   <ReviewSummary articles={approved.map(a=>({slug:a.slug,title:a.title}))}/>
    <div className={styles.list}>
     {approved.map((a,i)=><article className={styles.item} key={a.slug}>
       <div className={styles.number}>{String(i+1).padStart(2,"0")}</div>
