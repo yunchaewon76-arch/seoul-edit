@@ -7,10 +7,12 @@
     "originalOrAlternative": "original",
     "russianRetailer": "Lunifera",
     "russianProductUrl": "https://www.lunifera.ru/toner-diski-mediheal-madecassoside-blemish-pad.html",
-    "checkedAt": "2026-10-22",
-    "verificationNote": "10:44 — название в субтитрах. Карточка Lunifera найдена ранее; доступность страницы сегодня повторно не подтверждена.",
+    "checkedAt": "2026-11-06",
+    "verificationNote": "В ролике указана Madecassoside Blemish Pad. Проверено на Lunifera 06.11.2026.",
     "editorialImagePath": "/products/editorial/taeng-mh-pad.svg",
-    "editorialImageAlt": "Иллюстрация SEOUL EDIT: MEDIHEAL Madecassoside Blemish Pad"
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: MEDIHEAL Madecassoside Blemish Pad",
+    "previewImageUrl": "https://cloudinary.images-iherb.com/image/upload/f_auto%2Cq_auto%3Aeco/images/mhl/mhl05868/l/18.jpg",
+    "previewImageCredit": "iHerb · оригинальное фото товара"
   },
   {
     "id": "taeng-mh-mask",
@@ -20,10 +22,12 @@
     "originalOrAlternative": "original",
     "russianRetailer": "Joom",
     "russianProductUrl": "https://www.joom.ru/ru/products/6a5105197d338701a0381624",
-    "checkedAt": "2026-10-22",
-    "verificationNote": "10:44 — название в субтитрах; сторонний продавец, подлинность не проверена.",
+    "checkedAt": "2026-11-06",
+    "verificationNote": "В ролике указана Teatree Essential Mask; товарная страница на Joom проверена 06.11.2026.",
     "editorialImagePath": "/products/editorial/taeng-mh-mask.svg",
-    "editorialImageAlt": "Иллюстрация SEOUL EDIT: MEDIHEAL Teatree Essential Mask"
+    "editorialImageAlt": "Иллюстрация SEOUL EDIT: MEDIHEAL Teatree Essential Mask",
+    "previewImageUrl": "https://www.cosmehut.com.au/cdn/shop/files/MEDIHEALTeatreeEssentialMask10pcsCosmeHutKoreanBeautyAustralia1_1200x.png?v=1711443057",
+    "previewImageCredit": "Cosme Hut · оригинальное фото товара"
   },
   {
     "id": "taeng-lilybyred",
