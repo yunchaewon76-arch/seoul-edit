@@ -2,7 +2,7 @@ import {type EditorialProduct,safeRetailerLink,screenshotReferenceProducts} from
 import {getProductImage} from "@/data/product-image";
 export default function VideoProductShelf({products,showReference=false}:{products:EditorialProduct[];showReference?:boolean}){
  return <section className="se-products" aria-labelledby="se-products-heading">
-  <div className="se-product-head"><div><span className="eyebrow">THE PRODUCT NOTES</span><h2 id="se-products-heading">Что использовали в видео?</h2></div><p>Оригинал и российская альтернатива — только после сверки состава, назначения и ссылки.</p></div>
+  <div className="se-product-head"><div><span className="eyebrow">THE PRODUCT NOTES</span><h2 id="se-products-heading">Что использовали в видео?</h2></div><p>Средства, которые упоминались в выпуске, и ссылки на точные товарные карточки.</p></div>
   {products.length>0?<div className="se-product-grid">
    {products.map((p,i)=>{
     const link=safeRetailerLink(p);
@@ -16,10 +16,9 @@ export default function VideoProductShelf({products,showReference=false}:{produc
      <span className="se-product-role">{p.originalOrAlternative==="alternative"?"АЛЬТЕРНАТИВА":"ПРОДУКТ ИЗ ВИДЕО"}</span>
      <h3>{p.brand}</h3><p>{p.name}{p.variant?" · "+p.variant:""}</p>
      {p.originalOrAlternative==="alternative"&&<div className="se-product-reason"><strong>Вместо: {p.alternativeFor}</strong><span>{p.whyComparable}</span></div>}
-     {p.verificationNote&&<small className="se-product-disclaimer">{p.verificationNote}</small>}
      {link?<a className="se-product-buy" target="_blank" rel="noopener noreferrer" href={link}>Смотреть в {p.russianRetailer||"магазине"} ↗</a>:
-      <span className="se-product-unverified">Ссылка в России не подтверждена</span>}
-     <small className="se-product-disclaimer">Проверено: {p.checkedAt||"не проверено"} · Цену и остатки уточняйте у продавца.</small>
+      <span className="se-product-unverified" aria-label="Точная ссылка пока не добавлена">Ссылка появится позднее</span>}
+     {/* Internal SKU checks and date logs stay in structured source data, not the reader-facing card. */}
     </article>;
    })}
   </div>:<div className="se-product-empty"><strong>Список средств из этих роликов ещё проверяется.</strong><p>Мы не приписываем авторам неупомянутые продукты и не подбираем «аналоги» без подтверждённого исходного средства. После просмотра оригинала здесь появятся карточки с точными названиями и проверенными ссылками на российские магазины.</p></div>}

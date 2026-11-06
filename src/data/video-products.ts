@@ -12,6 +12,7 @@ export type EditorialProduct = {
  variant?:string;imageUrl?:string; // Sanity uploaded photo; rights gate enforced below
  imageRightsConfirmed?:boolean;imageUsageBasis?:string;imageCredit?:string;imageAlt?:string;
  editorialImageUrl?:string;editorialImagePath?:string;editorialImageAlt?:string;
+ previewImageUrl?:string;previewImageCredit?:string; // review-only, external catalog source; not a publication license
  productCategory?:"skincare"|"cheek"|"complexion"|"eyes"|"lips"|"tools";
  originalOrAlternative:"original"|"alternative";
  alternativeFor?:string;

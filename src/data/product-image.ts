@@ -14,6 +14,8 @@ function categoryOf(p:EditorialProduct):NonNullable<EditorialProduct["productCat
 }
 export function getProductImage(p:EditorialProduct):ProductImage{
  const name=[p.brand,p.name,p.variant].filter(Boolean).join(" ");
+ if(process.env.VERCEL_ENV!=="production" && p.previewImageUrl?.startsWith("https://") && p.previewImageCredit?.trim())
+  return {src:p.previewImageUrl,alt:name,credit:p.previewImageCredit+" · проверка прав перед выпуском",kind:"editorial"};
  // Never render an unlicensed user-provided image. Use both attribution and permission proof.
  if(p.imageRightsConfirmed===true&&p.imageUsageBasis?.trim()&&p.imageCredit?.trim()&&sanityImage(p.imageUrl))
   return {src:p.imageUrl!,alt:p.imageAlt?.trim()||name,credit:p.imageCredit!,kind:"licensed"};
