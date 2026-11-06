@@ -103,7 +103,10 @@ export async function getVerifiedProducts(videoSlug:string):Promise<EditorialPro
   .map(p=>{
    const seed=(p.sourceId&&seedById.get(p.sourceId))||seedById.get(p.id)||seedByIdentity.get(productIdentity(p));
    return seed?{...p,editorialImagePath:p.editorialImagePath||seed.editorialImagePath,
-    editorialImageAlt:p.editorialImageAlt||seed.editorialImageAlt}:p;
+    editorialImageAlt:p.editorialImageAlt||seed.editorialImageAlt,
+    previewImageUrl:seed.previewImageUrl||p.previewImageUrl,
+    previewImageCredit:seed.previewImageCredit||p.previewImageCredit,
+    checkedAt:(p.russianProductUrl===seed.russianProductUrl && seed.checkedAt && (!p.checkedAt||seed.checkedAt>p.checkedAt))?seed.checkedAt:p.checkedAt}:p;
   });
  const usedIds=new Set(cms.flatMap(p=>[p.id,p.sourceId].filter((v):v is string=>Boolean(v))));
  const usedProducts=new Set(cms.map(productIdentity));
