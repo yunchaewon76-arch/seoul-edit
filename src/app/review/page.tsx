@@ -7,6 +7,7 @@ import part3 from "@/data/approved-review-20261106-3.json";
 import part4 from "@/data/approved-review-20261106-4.json";
 import styles from "./index.module.css";
 import ReviewSummary from "@/components/ReviewSummary";
+import ReviewCover from "@/components/ReviewCover";
 import { expiredSet } from "@/data/editorial-review-publishing";
 
 const approved = [...part1,...part2,...part3,...part4].filter(a=>!expiredSet.has(a.slug));
@@ -35,6 +36,7 @@ export default function EditorialReviewIndex(){
    <div className={styles.list}>
     {approved.map((a,i)=><article className={styles.item} key={a.slug}>
       <div className={styles.number}>{String(i+1).padStart(2,"0")}</div>
+      <div className={styles.thumbnail}><ReviewCover slug={a.slug} title={a.title} category={a.cat} thumbnail/></div>
       <div className={styles.detail}>
         <p className={styles.tags}><span>{a.priority}</span> <span>{a.cat}</span> <span>V3</span></p>
         <h2><Link href={"/review/"+a.slug}>{a.title}</Link></h2>
