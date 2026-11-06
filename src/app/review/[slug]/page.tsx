@@ -9,6 +9,7 @@ import part4 from "@/data/approved-review-20261106-4.json";
 import {expiredSet,productCards} from "@/data/editorial-review-publishing";
 import {readerMarkdown} from "@/lib/editorial-reader";
 import ReviewActions from "@/components/ReviewActions";
+import ReviewCover from "@/components/ReviewCover";
 import styles from "./page.module.css";
 
 const articles=[...part1,...part2,...part3,...part4].filter(a=>!expiredSet.has(a.slug));
@@ -66,9 +67,7 @@ export default async function ReviewArticle({params}:{params:Promise<{slug:strin
    <article>
       <div className={styles.meta}><span>{a.cat.toUpperCase()} · SEOUL EDIT</span><span>PRIVATE READER EDITION</span></div>
       <h1 className={styles.title}>{a.title}</h1>
-      <div className={styles.cover} data-slug={slug} aria-label={"Редакционная AI-иллюстрация: "+a.title}>
-        <div className={styles.coverPlaceholder}><span>SEOUL EDIT / COVER REVIEW</span><strong>{a.cat}</strong><small>Иллюстрация к материалу · финальная проверка изображения</small></div>
-      </div>
+      <div className={styles.cover} data-slug={slug} aria-label={"Редакционная AI-иллюстрация: "+a.title}><ReviewCover slug={slug} title={a.title} category={a.cat}/></div>
       <div className={styles.layout}>
         <aside className={styles.rail}>
           <span>THE SEOUL EDIT</span>
