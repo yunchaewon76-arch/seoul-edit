@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
-import articles from "@/data/editorial-review-20261023.json";
+import priorArticles from "@/data/editorial-review-20261023.json";
+import part1 from "@/data/approved-review-20261106-1.json";
+import part2 from "@/data/approved-review-20261106-2.json";
+import part3 from "@/data/approved-review-20261106-3.json";
+import part4 from "@/data/approved-review-20261106-4.json";
+const articles = [...part1, ...part2, ...part3, ...part4, ...priorArticles];
 import styles from "./page.module.css";
 
 export const dynamic = "force-dynamic";
@@ -29,14 +34,11 @@ function contentNodes(markdown: string): ReactNode[] {
   const raw = (start < 0 ? markdown : markdown.slice(start)).replaceAll("\r", "");
   const lines = raw.split("\n");
   const items: ReactNode[] = [];
-  let seenTitle = false;
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
     if (!line || line === "---") continue;
     if (line.startsWith("# ")) {
-      if (!seenTitle) { seenTitle = true; continue; }
-      items.push(<h2 key={i}>{inline(line.slice(2))}</h2>);
-      continue;
+      continue; // The reviewed headline is rendered once as the article title.
     }
     if (line.startsWith("## ")) { items.push(<h2 key={i}>{inline(line.slice(3))}</h2>); continue; }
     if (line.startsWith("### ")) { items.push(<h3 key={i}>{inline(line.slice(4))}</h3>); continue; }
@@ -70,11 +72,11 @@ export default async function ReviewArticle({params}: {params: Promise<{slug:str
       <Link href="/"><strong>SEOUL EDIT</strong></Link>
       <span>EDITORIAL REVIEW · NOT FOR PUBLICATION</span>
     </header>
-    <nav className={styles.nav} aria-label="Other review articles">
+    <nav className={styles.nav} aria-label="Other review articles"><Link href="/review">Все статьи · 26 ↗</Link>
       {articles.map(a=><Link href={"/review/"+a.slug} key={a.slug} aria-current={a.slug===slug?"page":undefined}>{a.cat} · {a.display}</Link>)}
     </nav>
     <article>
-      <div className={styles.meta}><span>{article.cat.toUpperCase()} / POST</span><span>NOTION V3 · 23.10.2026</span></div>
+      <div className={styles.meta}><span>{article.cat.toUpperCase()} / POST</span><span>NOTION V3 · 06.11.2026</span></div>
       <h1 className={styles.title}>{article.title}</h1>
       <p className={styles.deck}>Расширенная редакционная статья SEOUL EDIT. Предпросмотр без публикации. Информация о товарах и заведениях требует проверки непосредственно перед публикацией.</p>
       <div className={styles.hero+" "+styles[article.visual]}>
