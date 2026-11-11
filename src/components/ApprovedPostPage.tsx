@@ -2,10 +2,12 @@ import Link from "next/link";
 import type {ReactNode} from "react";
 import approvedPosts from "@/data/approved-posts.json";
 import styles from "./ApprovedPostPage.module.css";
+import PublishedProductShelf from "./PublishedProductShelf";
 
 type ApprovedPost=(typeof approvedPosts)[number];
 
 function inline(raw:string):ReactNode[]{
+ raw=raw.replace(/<b>/gi,"**").replace(/<\/b>/gi,"**").replace(/<i>/gi,"*").replace(/<\/i>/gi,"*");
  const expression=/(\*\*[^*]+\*\*|\*[^*]+\*|\[[^\]]+\]\(https?:\/\/[^)]+\))/g;
  return raw.split(expression).filter(Boolean).map((part,i)=>{
   if(part.startsWith("**")&&part.endsWith("**"))return <strong key={i}>{part.slice(2,-2)}</strong>;
@@ -81,9 +83,10 @@ export default function ApprovedPostPage({post}:{post:ApprovedPost}){
   <Link className="back" href={"/"+category}>← {label}</Link>
   <div className="eyebrow">SEOUL EDIT / {label} / {shopping.length?"ГИД ПО ПРОДУКТАМ":"РЕДАКЦИОННЫЙ РАЗБОР"}</div>
   <header className={styles.articleHeader}><h1>{post.title}</h1><p className="article-deck">{post.excerpt}</p><div className="article-byline">РЕДАКЦИЯ SEOUL EDIT · {dateLabel} · РУССКАЯ РЕДАКЦИЯ</div></header>
-  <figure className={styles.hero}><img src={post.image} alt="Авторская тематическая иллюстрация SEOUL EDIT"/><figcaption>Иллюстрация SEOUL EDIT. Не документальный снимок события или конкретного товара.</figcaption></figure>
+  <figure className={styles.hero}><img src={post.image} alt="Иллюстративная фотография к материалу SEOUL EDIT"/><figcaption>{"imageCredit" in post && typeof post.imageCredit==="string"?post.imageCredit:"Иллюстрация SEOUL EDIT. Не документальный снимок события или конкретного товара."}</figcaption></figure>
   <div className={styles.columns}><aside className={styles.rail}><span>SEOUL EDIT</span><strong>Проверили.<br/>Объяснили.<br/>Сравнили.</strong>{shopping.length>0&&<a href="#shop">Средства и магазины ↓</a>}<a href={post.primarySource} target="_blank" rel="noopener noreferrer">Первоисточник ↗</a></aside>
    <article className={styles.body}>{editorialBody(post.markdown,post.image)}
+    <PublishedProductShelf slug={post.slug}/>
     {shopping.length>0&&<section className={styles.productSection} id="shop"><span className="eyebrow">SHOP THE RESEARCH</span><h2>Продукты и ссылки для России</h2><p>Фотографии и точные варианты можно посмотреть на официальных страницах брендов и продавцов. Здесь — оригинальные продукты и отдельно помеченные альтернативы. Наличие в вашем городе не гарантируется.</p>
       <div className={styles.productGrid}>{shopping.map((p,i)=><a key={p.name} className={styles.productCard} href={p.url} target="_blank" rel="noopener noreferrer nofollow"><div className={styles.productVisual} aria-hidden="true"><span>{String(i+1).padStart(2,"0")}</span><strong>{p.name.split(" ")[0]}</strong><small>{p.category}</small></div><div className={styles.productInfo}><span className={styles.productStatus}>{p.label}</span><h3>{p.name}</h3><p>{p.summary}</p><span className={styles.merchant}>{p.merchant} ↗</span></div></a>)}</div>
       <p className={styles.note}>Сами фото магазинов здесь не воспроизводятся без разрешения. Представленные карточки — авторская типографическая графика, а не изображения упаковки.</p>
