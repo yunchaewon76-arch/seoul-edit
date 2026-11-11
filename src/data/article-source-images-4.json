@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "nooni-immeme-japan",
+    "publisher": "www.cmn.co.kr",
+    "http": 200,
+    "status": "preview-only",
+    "images": [
+      {
+        "src": "https://www.cmn.co.kr/webupload/ckeditor/images/20261019_175435_0591808_1000.jpg",
+        "caption": "",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      }
+    ]
+  },
+  {
+    "slug": "zigzag-gift-service",
+    "publisher": "Newsis",
+    "http": 200,
+    "status": "restricted",
+    "images": [],
+    "note": "Redistribution/database expressly prohibited by source"
+  },
+  {
+    "slug": "kurly-beauty-festa-2026",
+    "publisher": "Newsis",
+    "http": 200,
+    "status": "restricted",
+    "images": [],
+    "note": "Redistribution/database expressly prohibited by source"
+  }
+]
