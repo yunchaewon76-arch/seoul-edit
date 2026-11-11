@@ -1,0 +1,109 @@
+[
+  {
+    "slug": "autumn-blouson-guide",
+    "publisher": "Allure Korea",
+    "http": 200,
+    "status": "preview-only",
+    "images": [
+      {
+        "src": "https://img.allurekorea.com/allure/2026/10/style_6ad15cf753302-900x1200.jpg",
+        "caption": "",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      },
+      {
+        "src": "https://img.allurekorea.com/allure/2026/10/style_6ad15d54216e7-944x1200.jpg",
+        "caption": "",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      }
+    ]
+  },
+  {
+    "slug": "short-hair-styling",
+    "publisher": "Allure Korea",
+    "http": 200,
+    "status": "preview-only",
+    "images": [
+      {
+        "src": "https://img.allurekorea.com/allure/2026/10/style_6ad45f359bf57-900x1200.jpg",
+        "caption": "@dlwlrma",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      },
+      {
+        "src": "https://img.allurekorea.com/allure/2026/10/style_6ad45ff232f28-900x1200.jpg",
+        "caption": "@you_r_love",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      }
+    ]
+  },
+  {
+    "slug": "slim-rectangle-glasses",
+    "publisher": "Allure Korea",
+    "http": 200,
+    "status": "preview-only",
+    "images": [
+      {
+        "src": "https://img.allurekorea.com/allure/2026/10/style_6ad5595725999-960x1200.jpg",
+        "caption": "@reinyourheart",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      },
+      {
+        "src": "https://img.allurekorea.com/allure/2026/10/style_6ad5594ac949f-525x700.jpg",
+        "caption": "",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      }
+    ]
+  },
+  {
+    "slug": "olive-young-gyeongju-silla",
+    "publisher": "www.hankyung.com",
+    "http": 403,
+    "status": "unavailable",
+    "images": []
+  },
+  {
+    "slug": "mamonde-creamy-tint-balm",
+    "publisher": "www.nextdaily.co.kr",
+    "http": 200,
+    "status": "preview-only",
+    "images": [
+      {
+        "src": "https://cdn.nextdaily.co.kr/news/photo/202610/253942_353698_3835.jpg",
+        "caption": "마몽드 크리미 틴트 컬러 밤.",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      },
+      {
+        "src": "https://cdn.nextdaily.co.kr/news/thumbnail/custom/20261112/254807_354444_3333_1794386013_120.jpg",
+        "caption": "",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      }
+    ]
+  },
+  {
+    "slug": "park-taeyoon-makeup-base",
+    "publisher": "Allure Korea",
+    "http": 200,
+    "status": "preview-only",
+    "images": [
+      {
+        "src": "https://img.allurekorea.com/allure/2026/10/style_6ad6403c468de-1200x675.jpg",
+        "caption": "",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      },
+      {
+        "src": "https://img.allurekorea.com/allure/2026/10/style_6ad640435658f-1200x675.jpg",
+        "caption": "",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      }
+    ]
+  }
+]
