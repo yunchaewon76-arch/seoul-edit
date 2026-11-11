@@ -1,21 +1,22 @@
 "use client";
 import {useEffect,useState} from "react";
+import {copyReviewStatus} from "@/data/copy-review-status-20261111";
 type Entry={slug:string,title:string};
 type Review={choice:"pending"|"approved"|"revision";note?:string;updated?:string};
-const KEY="seoul-edit-editorial-review-20261106";
+const KEY="seoul-edit-editorial-review-20261111";
 
 export default function ReviewSummary({articles}:{articles:Entry[]}){
- const [items,setItems]=useState<Record<string,Review>>({});
+ const [items,setItems]=useState<Record<string,Review>>(Object.fromEntries(Object.entries(copyReviewStatus).map(([slug,choice])=>[slug,{choice}])) as Record<string,Review>);
  const [copyLabel,setCopyLabel]=useState("전체 검수 결과 복사");
  useEffect(()=>{
-  function refresh(){try{setItems(JSON.parse(localStorage.getItem(KEY)||"{}"))}catch{setItems({})}}
+  function refresh(){try{setItems({...Object.fromEntries(Object.entries(copyReviewStatus).map(([slug,choice])=>[slug,{choice}])),...JSON.parse(localStorage.getItem(KEY)||"{}")})}catch{}}
   refresh();window.addEventListener("focus",refresh);window.addEventListener("storage",refresh);
   return()=>{window.removeEventListener("focus",refresh);window.removeEventListener("storage",refresh)};
  },[]);
  const approved=articles.filter(a=>items[a.slug]?.choice==="approved").length;
  const revision=articles.filter(a=>items[a.slug]?.choice==="revision").length;
  async function copy(){
-  const lines=["SEOUL EDIT · 검수 결과 · 2026-11-06","전체 "+articles.length+"편 / 완료 "+approved+"편 / 수정 요청 "+revision+"편",
+  const lines=["SEOUL EDIT · 검수 결과 · 2026-11-11","전체 "+articles.length+"편 / 완료 "+approved+"편 / 수정 요청 "+revision+"편",
     ...articles.map((a,i)=>String(i+1).padStart(2,"0")+". "+a.title+"\n상태: "+(items[a.slug]?.choice==="approved"?"검수 완료":items[a.slug]?.choice==="revision"?"수정 요청":"미검수")+"\nSlug: "+a.slug+"\n의견: "+(items[a.slug]?.note||"-")),
    "※ 웹사이트 실제 게시 승인은 이 요약을 검토한 후 별도로 수행"];
   try{await navigator.clipboard.writeText(lines.join("\n\n"));setCopyLabel("복사됨 · 채팅에 붙여 넣으세요")}catch{setCopyLabel("복사 실패 · 브라우저 권한을 확인하세요")}

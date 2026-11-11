@@ -10,9 +10,15 @@ import {expiredSet,productCards} from "@/data/editorial-review-publishing";
 import {readerMarkdown} from "@/lib/editorial-reader";
 import ReviewActions from "@/components/ReviewActions";
 import ReviewCover from "@/components/ReviewCover";
+import SourceImageGallery,{type SourceImageRecord} from "@/components/SourceImageGallery";
+import source1 from "@/data/article-source-images-1.json";
+import source2 from "@/data/article-source-images-2.json";
+import source3 from "@/data/article-source-images-3.json";
+import source4 from "@/data/article-source-images-4.json";
 import styles from "./page.module.css";
 
 const articles=[...part1,...part2,...part3,...part4].filter(a=>!expiredSet.has(a.slug));
+const sourcePhotos=[...source1,...source2,...source3,...source4] as SourceImageRecord[];
 type Article=(typeof articles)[number];
 export const dynamic="force-dynamic";
 export const metadata:Metadata={title:"SEOUL EDIT · Редакционный предпросмотр",robots:{index:false,follow:false,nocache:true}};
@@ -58,6 +64,8 @@ export default async function ReviewArticle({params}:{params:Promise<{slug:strin
  const a=articles.find(x=>x.slug===slug) as Article|undefined;
  if(!a)notFound();
  const products=productCards[slug]||[];
+ const sourceGallery=sourcePhotos.find(r=>r.slug===slug);
+ const paragraphs=contentNodes(a.markdown);
  return <main className={styles.shell}>
    <header className={styles.top}>
       <Link href="/review" className={styles.brand}>SEOUL EDIT</Link>
@@ -74,17 +82,26 @@ export default async function ReviewArticle({params}:{params:Promise<{slug:strin
           <strong>Красота.<br/>Мода.<br/>Культура.</strong>
           <a href={a.sourceUrl} target="_blank" rel="nofollow noopener noreferrer">Корейский источник ↗</a>
         </aside>
-        <div className={styles.body}>{contentNodes(a.markdown)}</div>
+        <div className={styles.body}>{paragraphs.slice(0,1)}<SourceImageGallery record={sourceGallery} sourceUrl={a.sourceUrl}/>{paragraphs.slice(1)}</div>
       </div>
       {products.length>0&&<section className={styles.products} aria-label="Товары из статьи">
         <div className={styles.productsHead}><p>SHOP THE STORY</p><h2>Средства и вещи из статьи</h2><span>Прямые ссылки на найденные товарные карточки</span></div>
         <div className={styles.productGrid}>
         {products.map((p,i)=><article className={styles.product} key={i}>
-          <a className={styles.productImage} href={p.href} target="_blank" rel="nofollow sponsored noopener noreferrer">
-             {/* External merchant image is shown only in this protected review; clear credit and rights gate below. */}
+          <a className={styles.productImage} href={p.href||p.originalProductUrl||p.sourceUrl||a.sourceUrl} target="_blank" rel="nofollow noopener noreferrer">
+             {/* Original editorial photography is used for a private review only; public licensing is still required. */}
+             {/* eslint-disable-next-line @next/next/no-img-element */}
              <img loading="lazy" alt={p.name} src={p.image}/>
           </a>
-          <div className={styles.productCopy}><small>{p.merchant}</small><h3>{p.name}</h3><p>{p.format||""}</p><a href={p.href} target="_blank" rel="nofollow sponsored noopener noreferrer">Посмотреть товар ↗</a><span>{p.imageCredit}</span></div>
+          <div className={styles.productCopy}>
+            <small>{p.href?(p.merchant||"Магазин"):"Упоминается в статье"}</small>
+            <h3>{p.name}</h3>
+            <p>{p.format||""}</p>
+            {p.href?
+             <a href={p.href} target="_blank" rel="nofollow noopener noreferrer">Смотреть в магазине ↗</a>:
+             <><span className={styles.productMissingLink}>Российская карточка пока не найдена</span><a href={p.originalProductUrl||p.sourceUrl||a.sourceUrl} target="_blank" rel="nofollow noopener noreferrer">{p.originalProductUrl?"Описание у бренда ↗":"Оригинал в Allure Korea ↗"}</a></>}
+            <a className={styles.productPhotoCredit} href={p.sourceUrl||a.sourceUrl} target="_blank" rel="nofollow noopener noreferrer">{p.imageCredit} ↗</a>
+          </div>
         </article>)}
         </div>
         <p className={styles.productDisclaimer}>Фото каталогов используются для редакционной проверки и требуют разрешения перед публичным размещением. Ассортимент и цена определяются продавцом.</p>

@@ -1,13 +1,14 @@
 "use client";
 import {useEffect,useState} from "react";
+import {copyReviewStatus} from "@/data/copy-review-status-20261111";
 type Choice="pending"|"approved"|"revision";
 type RecordValue={choice:Choice;note:string;updated:string};
-const KEY="seoul-edit-editorial-review-20261106";
+const KEY="seoul-edit-editorial-review-20261111";
 
 export default function ReviewActions({slug,title}:{slug:string;title:string}) {
- const [choice,setChoice]=useState<Choice>("pending");
+ const [choice,setChoice]=useState<Choice>(copyReviewStatus[slug]||"pending");
  const [note,setNote]=useState("");
- const [saved,setSaved]=useState(false);
+ const [saved,setSaved]=useState((copyReviewStatus[slug]||"pending")!=="pending");
  const [copied,setCopied]=useState(false);
  useEffect(()=>{
    try {const all=JSON.parse(localStorage.getItem(KEY)||"{}");const item=all[slug] as RecordValue|undefined;

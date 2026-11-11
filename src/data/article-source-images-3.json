@@ -1,0 +1,122 @@
+[
+  {
+    "slug": "bambi-jacket-trend",
+    "publisher": "Vogue Korea",
+    "http": 200,
+    "status": "preview-only",
+    "images": [
+      {
+        "src": "https://img.vogue.co.kr/vogue/2026/10/style_6ad723dc021e4-1050x1400.jpg",
+        "caption": "@marie.helenedbs",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      },
+      {
+        "src": "https://img.vogue.co.kr/vogue/2026/10/style_6ad7245ec7a61-1050x1400.jpg",
+        "caption": "@elenabrotons",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      }
+    ]
+  },
+  {
+    "slug": "jisoo-heart-eye-patch",
+    "publisher": "Allure Korea",
+    "http": 200,
+    "status": "preview-only",
+    "images": [
+      {
+        "src": "https://img.allurekorea.com/allure/2026/10/style_6ad70acb1bc78-900x1200.jpg",
+        "caption": "인스타그램@Haileybieber",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      },
+      {
+        "src": "https://img.allurekorea.com/allure/2026/10/style_6ad70abd1974a-1200x1200.jpg",
+        "caption": "인스타그램@Haileybieber",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      }
+    ]
+  },
+  {
+    "slug": "lift-manicure-guide",
+    "publisher": "Vogue Korea",
+    "http": 200,
+    "status": "preview-only",
+    "images": [
+      {
+        "src": "https://img.vogue.co.kr/vogue/2026/10/style_6ad093e9c5ce1-1050x1400.jpg",
+        "caption": "@bellahadid",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      },
+      {
+        "src": "https://img.vogue.co.kr/vogue/2026/10/style_6ad093f4418cf-1050x1400.jpg",
+        "caption": "@nailsbymei",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      }
+    ]
+  },
+  {
+    "slug": "korean-tone-up-products",
+    "publisher": "Allure Korea",
+    "http": 200,
+    "status": "preview-only",
+    "images": [
+      {
+        "src": "https://img.allurekorea.com/allure/2026/10/style_6ad0e2ec10f17-1200x675.jpg",
+        "caption": "",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      },
+      {
+        "src": "https://img.allurekorea.com/allure/2026/10/style_6ad0e2f262f7a-1200x675.jpg",
+        "caption": "",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      }
+    ]
+  },
+  {
+    "slug": "faux-fur-trims",
+    "publisher": "Allure Korea",
+    "http": 200,
+    "status": "preview-only",
+    "images": [
+      {
+        "src": "https://img.allurekorea.com/allure/2026/10/style_6ad328e4892c7-1200x900.jpg",
+        "caption": "@evameloche",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      },
+      {
+        "src": "https://img.allurekorea.com/allure/2026/10/style_6ad329e75c0ca-900x1200.jpg",
+        "caption": "@marie.helenedbs",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      }
+    ]
+  },
+  {
+    "slug": "guerlain-lheure-bleue-2026",
+    "publisher": "Vogue Korea",
+    "http": 200,
+    "status": "preview-only",
+    "images": [
+      {
+        "src": "https://img.vogue.co.kr/vogue/2026/10/style_6ad5be43e8e26-933x1400.jpg",
+        "caption": "",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      },
+      {
+        "src": "https://img.vogue.co.kr/vogue/2026/10/style_6ad5be7869fea.jpg",
+        "caption": "",
+        "credit": null,
+        "rights": "permission-not-confirmed"
+      }
+    ]
+  }
+]
