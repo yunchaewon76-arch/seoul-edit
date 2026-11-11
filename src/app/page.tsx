@@ -13,7 +13,7 @@ export default async function Home(){
  const featuredSlugs=new Set(newEditorials.map(s=>s.slug));
  const picks=sortedStories.filter(s=>s.slug!==hero.slug&&s.slug!==spotlight.slug&&!featuredSlugs.has(s.slug)).slice(0,6);
  return <div id="top"><div className="container">
-  <div className="issue-line"><span><span className="issue-mark">✳</span> ISSUE 001 <span className="issue-separator">/</span> OCTOBER 2026</span><span>BEAUTY · FASHION · SEOUL SIGNAL</span><span className="issue-right">INDEPENDENT KOREA JOURNAL ↗</span></div>
+  <div className="issue-line"><span><span className="issue-mark">✳</span> ISSUE 001 <span className="issue-separator">/</span> NOVEMBER 2026</span><span>BEAUTY · FASHION · SEOUL SIGNAL</span><span className="issue-right">INDEPENDENT KOREA JOURNAL ↗</span></div>
   <section className="cover-story" aria-labelledby="cover-title">
    <Link href={"/article/"+hero.slug} className="cover-photo">
     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -33,7 +33,7 @@ export default async function Home(){
   </section>
   <div className="under-cover"><span>WHAT'S BEHIND THE TREND</span><p>Корейская красота и мода — с фактами, оригинальными источниками и вниманием к контексту.</p><span>READ WITH CURIOSITY ↓</span></div>
   {newEditorials.length>0&&<section className="mag-section" aria-labelledby="new-editorials-heading">
-   <div className="section-heading"><div><span className="section-num">JUST PUBLISHED / P1 FIRST</span><h2 id="new-editorials-heading">Новые <em>публикации</em></h2></div><Link className="section-action" href="/signal">Все статьи <span>↗</span></Link></div>
+   <div className="section-heading"><div><span className="section-num">NEW STORIES / EDITORIAL APPROVED</span><h2 id="new-editorials-heading">Новые <em>публикации</em></h2></div><Link className="section-action" href="/signal">Все статьи <span>↗</span></Link></div>
    <p className="se-home-video-deck">Свежие материалы SEOUL EDIT. Сначала важные проверенные темы, затем дополнительные редакционные находки.</p>
    <div className="story-grid">{newEditorials.map(story=><ArticleCard key={story.slug} story={story}/>)}</div>
   </section>}
