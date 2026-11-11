@@ -20,7 +20,7 @@ export default function SourceImageGallery({record,sourceUrl}:{record?:SourceIma
       {!broken.includes(img.src)?<a href={sourceUrl} target="_blank" rel="noopener noreferrer nofollow" title="Посмотреть оригинальную публикацию">
         {/* Source images are for protected editorial preview; rights remain uncleared. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={img.src} alt={img.caption||"Иллюстрация из оригинальной публикации "+record.publisher} loading="lazy" onError={()=>setBroken(x=>[...x,img.src])}/>
+        <img src={img.src} alt={img.caption||"Иллюстрация из оригинальной публикации "+record.publisher} loading="eager" onError={()=>setBroken(x=>[...x,img.src])}/>
        </a>:<a className="se-source-gallery__fallback" href={sourceUrl} target="_blank" rel="noopener noreferrer nofollow">Посмотреть снимок у первоисточника ↗</a>}
       <figcaption>Фото: {img.credit||record.publisher} <span>·</span> <a href={sourceUrl} target="_blank" rel="noopener noreferrer nofollow">Источник: {record.publisher}</a></figcaption>
      </figure>)}
